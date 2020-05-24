@@ -25,6 +25,14 @@ class Constante : public Expression
         void affichagePolonaiseInversee() {
             std::cout << _valeur;
         }
+        std::string affichageClassiqueStr() {
+            std::string str = std::to_string(_valeur);
+            return str;
+        }
+        std::string affichagePolonaiseInverseeStr() {
+            std::string str = std::to_string(_valeur);
+            return str;
+        }
 };
 
 #endif // CONSTANTE_H

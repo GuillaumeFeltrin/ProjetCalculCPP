@@ -37,6 +37,14 @@ class Division : public Operation
             _terme2->affichagePolonaiseInversee();
             std::cout << " / ";
         }
+        std::string affichageClassiqueStr() {
+            return " ( " + _terme1->affichageClassiqueStr()
+                    + " / " + _terme2->affichageClassiqueStr() + " ) ";
+        }
+        std::string affichagePolonaiseInverseeStr() {
+            return _terme1->affichagePolonaiseInverseeStr()
+                   + " " + _terme2->affichagePolonaiseInverseeStr() + " / ";
+        }
 };
 
 #endif // DIVISION_H

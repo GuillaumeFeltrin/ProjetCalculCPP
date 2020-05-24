@@ -9,24 +9,30 @@
 #include <QTextEdit>
 #include <QString>
 #include <QList>
+#include "Division.h"
+#include "Addition.h"
+#include "Soustraction.h"
+#include "Multiplication.h"
+#include "Constante.h"
+#include "interactionutilisateur.h"
 
 class Window : public QWidget
 {
     Q_OBJECT
 public:
     explicit Window(QWidget *parent = nullptr);
-    QList<QString> getElements();
 
 private slots:
     void valider();
     void suivante();
 
 private:
-    QLabel *resultat;
-    QLabel *classique;
-    QLabel *polonaise;
+    QLabel *_resultat;
+    QLabel *_classique;
+    QLabel *_polonaise;
     QTextEdit *_champ;
     QList<QString> _elements;
+    InteractionUtilisateur * _interactionUtilisateur;
 
 signals:
 

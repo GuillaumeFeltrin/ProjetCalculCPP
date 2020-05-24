@@ -5,6 +5,7 @@
 #include "soustraction.h"
 #include "multiplication.h"
 #include "division.h"
+#include "window.h"
 #include "iostream"
 using namespace std;
 
@@ -13,7 +14,7 @@ int main(int argc, char *argv[])
 {
     // creation application
     QCoreApplication a(argc, argv);
-
+    QApplication app(argc, argv);
 
     // test affichage CONSTANTE
     cout << "creation premiere constante: ";
@@ -89,7 +90,11 @@ int main(int argc, char *argv[])
     cout << g.calcul() << endl;
     cout << endl;
 
+    // Objet de la class Window qui hérite de QWidget
+        Window window;
 
+        window.show();
+    return app.exec();
     // exécution application
-    return a.exec();
+    //return a.exec();
 }

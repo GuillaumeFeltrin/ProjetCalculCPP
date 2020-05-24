@@ -1,7 +1,8 @@
-QT -= gui
+QT += gui
 
-CONFIG += c++11 console
-CONFIG -= app_bundle
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+
+CONFIG += c++11
 
 # The following define makes your compiler emit warnings if you use
 # any Qt feature that has been marked deprecated (the exact warnings
@@ -21,7 +22,8 @@ SOURCES += \
         main.cpp \
         multiplication.cpp \
         operation.cpp \
-        soustraction.cpp
+        soustraction.cpp \
+        window.cpp
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -35,4 +37,8 @@ HEADERS += \
     division.h \
     multiplication.h \
     operation.h \
-    soustraction.h
+    soustraction.h \
+    window.h
+
+FORMS += \
+    window.ui

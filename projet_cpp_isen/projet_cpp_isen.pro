@@ -1,5 +1,7 @@
-QT -= gui
+QT       += core gui
+QT += gui charts
 
+QT += widgets
 CONFIG += c++11 console
 CONFIG -= app_bundle
 
@@ -19,6 +21,7 @@ SOURCES += \
         constante.cpp \
         division.cpp \
         main.cpp \
+        mainwindow.cpp \
         multiplication.cpp \
         operation.cpp \
         soustraction.cpp
@@ -33,6 +36,12 @@ HEADERS += \
     addition.h \
     constante.h \
     division.h \
+    mainwindow.h \
     multiplication.h \
     operation.h \
     soustraction.h
+
+QT += widgets
+
+FORMS += \
+    mainwindow.ui

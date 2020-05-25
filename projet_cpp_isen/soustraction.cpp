@@ -1,30 +1,16 @@
-#include "Soustraction.h"
-#include <iostream>
-#include <Constante.h>
+#include "soustraction.h"
 
 
-using namespace std;
+Soustraction::Soustraction(Expression *_terme1, Expression *_terme2) :
+    Operation(_terme1, _terme2)  {}
 
-Soustraction::Soustraction()
-{
-    _terme1 = 0;
-    _terme2 = 0;
-}
-
-Soustraction::Soustraction(Expression *a, Expression *b)
-{
-    _terme1 = a;
-    _terme2 = b;
-}
-
+float Soustraction :: calcul() {
+  return _terme1->calcul() - _terme2->calcul();
+ }
 
 bool Soustraction::isConstante()
 {
     return false;
-}
-
-float Soustraction:: calcul() {
-  return _terme1->calcul() - _terme2->calcul();
 }
 
 Expression* Soustraction :: simplifier()
@@ -49,24 +35,16 @@ Expression* Soustraction :: simplifier()
     }
 }
 
- void Soustraction :: affichageClassique()
- {
-     std::cout << "(";
-     _terme1->affichageClassique();
-     std::cout << " - ";
-     _terme2->affichageClassique();
-     std::cout << ")";
-}
+void Soustraction :: affichageClassique(){
+    std::cout << "(";
+    _terme1->affichageClassique();
+    std::cout << " - ";
+    _terme2->affichageClassique();
+    std::cout << ")";}
 
-void Soustraction :: affichagePolonaiseInversee()
-{
+void Soustraction :: affichagePolonaiseInversee(){
     _terme1->affichagePolonaiseInversee();
     cout << " ";
     _terme2->affichagePolonaiseInversee();
-    cout<<" - ";
-}
+    cout<<" - ";}
 
-Soustraction::~Soustraction()
-{
-    //dtor
-}

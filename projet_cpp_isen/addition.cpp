@@ -1,29 +1,16 @@
-#include "Addition.h"
-#include <iostream>
-#include <string.h>
-#include <Constante.h>
-using namespace std;
+#include "addition.h"
 
-Addition::Addition()
-{
-    _terme1 = 0;
-    _terme2 = 0;
-}
+Addition::Addition(Expression *_terme1, Expression *_terme2) :
+    Operation(_terme1, _terme2)  {}
 
-Addition::Addition(Expression* a, Expression* b)
-{
-    _terme1 = a;
-    _terme2 = b;
-}
+float Addition :: calcul() {
+  return _terme1->calcul() + _terme2->calcul();
+ }
 
 bool Addition :: isConstante()
 {
     return false;
 }
-
-float Addition :: calcul() {
-  return _terme1->calcul() + _terme2->calcul();
- }
 
 Expression* Addition :: simplifier()
 {
@@ -47,24 +34,15 @@ Expression* Addition :: simplifier()
     }
 }
 
- void Addition :: affichageClassique()
- {
-     std::cout << "(";
-     _terme1->affichageClassique();
-     std::cout << " + ";
-     _terme2->affichageClassique();
-     std::cout << ")";
-}
+void Addition :: affichageClassique(){
+    std::cout << "(";
+    _terme1->affichageClassique();
+    std::cout << " + ";
+    _terme2->affichageClassique();
+    std::cout << ")";}
 
-void Addition :: affichagePolonaiseInversee()
-{
+void Addition :: affichagePolonaiseInversee(){
     _terme1->affichagePolonaiseInversee();
     cout << " ";
     _terme2->affichagePolonaiseInversee();
-    cout<<" + ";
-}
-
-Addition::~Addition()
-{
-    //dtor
-}
+    cout<<" + ";}

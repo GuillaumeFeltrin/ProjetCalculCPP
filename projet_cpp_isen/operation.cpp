@@ -5,3 +5,8 @@ Operation::Operation(Expression* a, Expression* b)
     _terme1 = a;
     _terme2 = b;
 }
+
+bool Operations::isConstante()
+{
+    return false;
+}

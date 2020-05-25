@@ -1,28 +1,19 @@
 #ifndef ADDITION_H
 #define ADDITION_H
-#include <string>
 
-#include <Operations.h>
-#include <Expression.h>
+#include "operation.h"
 
 
-class Addition : public Operations
+class Addition : Operation
 {
-    public:
-        Addition();
-        Addition(Expression* a, Expression* b);
-        float calcul();
-        bool isConstante();
-        void affichageClassique();
-        void affichagePolonaiseInversee();
-        Expression* simplifier();
-        virtual ~Addition();
+public:
+    Addition(Expression *_terme1, Expression *_terme2);
+    float calcul();
+    bool isConstante();
+    Expression* simplifier();
+    void affichageClassique();
+    void affichagePolonaiseInversee();
 
-    protected:
-
-    private:
-        Expression* _terme1;
-        Expression* _terme2;
 };
 
 #endif // ADDITION_H

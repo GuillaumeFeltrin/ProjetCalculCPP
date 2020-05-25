@@ -1,23 +1,20 @@
 #ifndef EXPRESSION_H
 #define EXPRESSION_H
 
-#include <string>
+#include <iostream>
 
+using namespace std;
 
 class Expression
 {
-    public:
-        Expression();
-        virtual float calcul();
-        virtual bool isConstante();
-        virtual Expression* simplifier();
-        virtual void affichageClassique() = 0;
-        virtual void affichagePolonaiseInversee();
-        virtual ~Expression();
-
-    protected:
-
-    private:
+public:
+    Expression(){}
+    virtual ~Expression(){}
+    virtual float calcul() = 0;
+    virtual bool isConstante();
+    virtual Expression* simplifier();
+    virtual void affichageClassique() = 0;
+    virtual void affichagePolonaiseInversee() = 0;
 };
 
 #endif // EXPRESSION_H

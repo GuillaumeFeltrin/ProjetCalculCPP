@@ -1,16 +1,8 @@
-#include "Constante.h"
-#include <iostream>
-#include <string>
-using namespace std;
+#include "constante.h"
 
-Constante::Constante()
+Constante::Constante(float val)
 {
-    _valeur = 0;
-}
-
-Constante::Constante(float c)
-{
-  _valeur = c;
+ _valeur = val;
 }
 
 Expression* Constante :: simplifier()
@@ -19,32 +11,20 @@ Expression* Constante :: simplifier()
     return con;
 }
 
-float Constante :: calcul()
-{
-  return _valeur;
-}
-
 bool Constante:: isConstante()
 {
     return true;
 }
 
-Constante::setValeur(float c)
-{
-    _valeur = c;
-}
-
-void Constante :: affichageClassique()
-{
+void Constante::affichageClassique(){
     cout << _valeur;
 }
 
-void Constante :: affichagePolonaiseInversee()
-{
+void Constante::affichagePolonaiseInversee(){
     cout << _valeur;
 }
 
-Constante::~Constante()
-{
-    //dtor
+
+float Constante :: calcul(){
+    return _valeur;
 }

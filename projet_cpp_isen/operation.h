@@ -12,6 +12,7 @@ protected:
 
 public:
     Operation(Expression* a, Expression* b);
+    bool isConstante();
 };
 
 #endif // OPERATION_H

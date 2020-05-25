@@ -21,7 +21,8 @@ SOURCES += \
         main.cpp \
         multiplication.cpp \
         operation.cpp \
-        soustraction.cpp
+        soustraction.cpp \
+        variable.cpp
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -35,4 +36,5 @@ HEADERS += \
     division.h \
     multiplication.h \
     operation.h \
-    soustraction.h
+    soustraction.h \
+    variable.h

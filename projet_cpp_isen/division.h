@@ -1,26 +1,17 @@
 #ifndef DIVISION_H
 #define DIVISION_H
 
-#include <Operations.h>
+#include "operation.h"
 
-
-class Division : public Operations
+class Division : Operation
 {
-    public:
-        Division();
-        Division(Expression *a, Expression *b);
-        float calcul();
-        Expression * simplifier();
-        bool isConstante();
-        void affichageClassique();
-        void affichagePolonaiseInversee();
-        virtual ~Division();
-
-    protected:
-
-    private:
-        Expression* _terme1;
-        Expression* _terme2;
+public:
+    Division(Expression *_terme1, Expression *_terme2);
+    float calcul();
+    Expression * simplifier();
+    bool isConstante();
+    void affichageClassique();
+    void affichagePolonaiseInversee();
 };
 
 #endif // DIVISION_H

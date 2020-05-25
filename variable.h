@@ -14,10 +14,16 @@ class Variable : public Expression
         void affichageClassique();
         void affichagePolonaiseInversee();
 
-    protected:
         char _csteV;
         float _valeur;
+        Variable* next;
+
+    protected:
+
     private:
 };
 
 #endif // VARIABLE_H
+
+
+

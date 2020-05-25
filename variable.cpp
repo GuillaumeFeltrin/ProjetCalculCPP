@@ -7,12 +7,15 @@ using namespace std;
 Variable::Variable()
 {
     _csteV = 'c';
+    _valeur = 1;
+     next = NULL;
 }
 
 Variable::Variable(char c, float nb)
 {
     _csteV = c;
     _valeur = nb;
+     next = NULL;
 }
 
 

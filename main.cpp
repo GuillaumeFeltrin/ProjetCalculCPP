@@ -6,6 +6,7 @@
 #include "multiplication.h"
 #include "division.h"
 #include "variable.h"
+#include "symboletable.h"
 #include "iostream"
 using namespace std;
 
@@ -49,6 +50,46 @@ int main(int argc, char *argv[])
         add4.affichagePolonaiseInversee();
         cout << "      = "<< add4.calcul() << endl;
 
+        // TEST TABLE DES SYMBOLES
+        Symboletable st;
+           char check;
+           cout << "**** EXEMPLE SYMBOL_TABLE ****\n";
+
+           // insert 'x' = 4
+           if (st.insert('x', 4))
+               cout << "creation success ";
+           else
+               cout << "\nFailed to insert.\n";
+
+           // insert 'y' = 5
+           if (st.insert('y', 5))
+               cout << " successfully\n\n";
+           else
+               cout << "\nFailed to insert\n";
+
+           // find 'x'
+           check = st.find('x');
+           if (check != -1)
+               cout << "Variable Is present\n";
+           else
+               cout << "\nVariable Not Present\n";
+
+           // delete 'x'
+           if (st.deleteRecord('x'))
+               cout << "x variable is deleted\n";
+           else
+               cout << "\nFailed to delete\n";
+
+           // modify 'y'
+           if (st.modify( 'y', 1))
+               cout << "\n Number Identifier modified\n";
+
+           // find and print 'number'
+           check = st.find('y');
+           if (check != -1)
+               cout << "Variable y is present\n";
+           else
+               cout << "\nVariable not Present";
 
 
 

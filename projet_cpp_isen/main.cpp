@@ -12,14 +12,12 @@
 #include <QtCharts>
 #include <QtCharts/QLineSeries>
 #include <QtCharts/QChartView>
-
 using namespace std;
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     MainWindow w;
-
 
         // test affichage CONSTANTE
         cout << "creation premiere constante: ";

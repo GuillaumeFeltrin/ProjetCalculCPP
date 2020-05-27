@@ -143,17 +143,13 @@ void MainWindow::on_pushButton_clicked()
     Addition add(&a,&b);
     string addStr = add.affichageClassiqueStr();
 
-    //Compte le nombre de variable dans l'expression créée dans le code.
-    int nbVariableExp=0;
-    for(int i=0;i<addStr.size();i++)
-       if(isalpha(addStr[i])) nbVariableExp++;
+    //après remplacer l'expression add par une expression recupérée via l'IHM
 
     if(expression != NULL && _minX != NULL && _maxX != NULL && _minY != NULL && _maxY != NULL){
-        //cas où le nombre de variable est nulle
-        if(nbVariableExp == 0){
-            affichage_graphique(&add);
-            ui->error_msg->hide();
-        }
+
+           affichage_graphique(&add);
+           ui->error_msg->hide();
+
 
         //cas où le nombre de variable est non nulle
 
@@ -170,12 +166,20 @@ void MainWindow::affichage_graphique(Expression *exp){
     QValueAxis *axisX = new QValueAxis();
     QValueAxis *axisY = new QValueAxis();
 
+    string addStr = exp->affichageClassiqueStr();
 
-    for (int i=_minX; i<(_maxX)+1 ; i++)
-    {
-     series->append(i, exp->calcul());
+    //Compte le nombre de variable dans l'expression créée dans le code.
+    int nbVariableExp=0;
+    for(int i=0;i<addStr.size();i++)
+       if(isalpha(addStr[i])) nbVariableExp++;
+
+    //cas où on a qu'une variable
+    if(nbVariableExp == 0){
+        for (int i=_minX; i<(_maxX)+1 ; i++)
+        {
+         series->append(i, exp->calcul());
+        }
     }
-
     QChart *chart = new QChart();
     axisX->setRange(_minX, _maxX);
     axisY->setRange(_minY, _maxY);

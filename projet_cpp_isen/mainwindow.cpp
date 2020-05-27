@@ -5,10 +5,12 @@
 #include <QtCharts>
 #include <QtCharts/QLineSeries>
 #include <QtCharts/QChartView>
-
+#include <iostream>
 #include "addition.h"
 #include "multiplication.h"
 #include <list>
+#include <sstream>
+
 using namespace std;
 
 //Cette fonction permet de tracer une fonction affine
@@ -70,15 +72,20 @@ void MainWindow::on_sliderAbscisses_valueChanged(int value)
 {
     //mouvement du slider et affichage de la valeur de l'échelle
     QString s = QString::number(value);
-    ui->abscisseValue->setText(s);
+    //ui->abscisseValue->setText(s);
 
 }
 
 
 void MainWindow::on_pushButton_clicked()
 {
-   /* //récupération des variables
-    abscisse = ui->abscisseValue->text().toInt();
+    //récupération des variables
+    //abscisse = ui->abscisseValue->text().toInt();
+    _minX = ui->minXValue->text().toInt();
+    _minY = ui->minYValue->text().toInt();
+    _maxX = ui->maxXValue->text().toInt();
+    _maxY = ui->maxYValue->text().toInt();
+
     cout << abscisse << endl;
     expression = ui->expressionValue->text();
 
@@ -89,8 +96,9 @@ void MainWindow::on_pushButton_clicked()
     int nbVariable=0;
     for(int i=0;i<str_expression.size();i++)
        if(isalpha(str_expression[i])) nbVariable++;
-    cout<<"Number of digits:"<<nbVariable <<endl;
+    cout<<"Nombre de Variable:"<<nbVariable <<endl;
 
+    /*
     cout << str_expression <<endl;
 
 
@@ -128,9 +136,13 @@ void MainWindow::on_pushButton_clicked()
        series = create2ndPolynomeFunction(nbTab[0], nbTab[1], nbTab[2]);
     }*/
 
-    //vérification du formulaire
-    if(expression != NULL && ui->abscisseValue->text() != NULL){
-        affichage_graphique();
+
+    //Test avec une expression construite par code
+    Constante a(1);
+    Constante b(4);
+    Addition add(&a,&b);
+    if(expression != NULL && _minX != NULL && _maxX != NULL && _minY != NULL && _maxY != NULL){
+        affichage_graphique(&add);
         ui->error_msg->hide();
 
     }else{
@@ -139,15 +151,51 @@ void MainWindow::on_pushButton_clicked()
 
 }
 
+//affiche l'expression passée en paramètre
+void MainWindow::affichage_graphique(Expression *exp){
+
+    QLineSeries *series = new QLineSeries();
+    QValueAxis *axisX = new QValueAxis();
+    QValueAxis *axisY = new QValueAxis();
+
+
+    for (int i=_minX; i<(_maxX)+1 ; i++)
+    {
+     series->append(i, exp->calcul());
+    }
+
+    QChart *chart = new QChart();
+    axisX->setRange(_minX, _maxX);
+    axisY->setRange(_minY, _maxY);
+    chart->update();
+    chart->addSeries(series);
+    chart->setTitle(expression);
+
+    QChartView *chartView = new QChartView(chart);
+    chartView->chart()->setAxisX(axisX, series);
+    chartView->chart()->setAxisY(axisY, series);
+    chartView->setRenderHint(QPainter::Antialiasing);
+    chartView->setParent(ui->verticalFrame_2);
+    chartView->show();
+
+}
+
+
 void MainWindow::affichage_graphique()
 {
-    QLineSeries *series = new QLineSeries();
+     QLineSeries *series = new QLineSeries();
      Constante terme1(-3);
      Constante terme2(0);
 
+
      //création des séries avec notre expression (terme1*x+terme2), en attendant le code du groupe 2
-     for (int i=-(abscisse); i<(abscisse)+1 ; i++)
+     QValueAxis *axisX = new QValueAxis();
+     QValueAxis *axisY = new QValueAxis();
+
+     for (int i=_minX; i<(_maxX)+1 ; i++)
      {
+
+
       Constante x(i);
       Multiplication multiplication(&terme1,&x);
       Constante resultat(multiplication.calcul());
@@ -155,16 +203,19 @@ void MainWindow::affichage_graphique()
       series->append(i, add.calcul());
       }
 
-
-     //affichage des séries
      QChart *chart = new QChart();
      chart->update();
      chart->addSeries(series);
-     chart->createDefaultAxes();
+     axisX->setRange(_minX, _maxX);
+     axisY->setRange(_minY, _maxY);
+
+
      chart->setTitle(expression);
 
 
     QChartView *chartView = new QChartView(chart);
+    chartView->chart()->setAxisX(axisX, series);
+    chartView->chart()->setAxisY(axisY, series);
     chartView->setRenderHint(QPainter::Antialiasing);
     chartView->setParent(ui->verticalFrame_2);
     chartView->show();

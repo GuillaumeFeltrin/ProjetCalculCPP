@@ -65,7 +65,7 @@ int main(int argc, char *argv[])
 
 
         // TEST MULTIPLICATION
-        Multiplication f(&b, &c);
+        Multiplication f(&b, &c);   
 
         cout << "affichage classique multiplication : ";
         f.affichageClassique();
@@ -95,6 +95,18 @@ int main(int argc, char *argv[])
         cout << g.calcul() << endl;
         cout << endl;
 
+
+
+        Addition add1 = Addition(&b,&c);
+        Constante cst3(20);
+        Constante cst4(40);
+        Division add2 = Division(&cst3, &b);
+        Multiplication multi = Multiplication(&add1, &add2);
+        multi.affichageClassique();
+        cout << endl;
+        multi.affichagePolonaiseInversee();
+        cout << endl;
+        cout << multi.calcul() << endl;
 
     w.show();
     return a.exec();

@@ -4,7 +4,7 @@
 #include "operation.h"
 
 
-class Addition : Operation
+class Addition : public Operation
 {
 public:
     Addition(Expression *_terme1, Expression *_terme2);

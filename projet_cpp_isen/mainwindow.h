@@ -29,6 +29,7 @@ private slots:
     void on_pushButton_clicked();
 
     void affichage_graphique();
+    void affichage_graphique(Expression *expression);
 
 
 
@@ -37,6 +38,10 @@ private:
     QLineEdit *abscisseValue;
     QLineEdit *expressionValue;
     int abscisse;
+    int _minX;
+    int _maxX;
+    int _minY;
+    int _maxY;
     QString expression;
 };
 #endif // MAINWINDOW_H

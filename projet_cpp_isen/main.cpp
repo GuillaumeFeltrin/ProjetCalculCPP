@@ -5,19 +5,23 @@
 #include "soustraction.h"
 #include "multiplication.h"
 #include "division.h"
-#include "iostream"
 #include "mainwindow.h"
-
 #include <QApplication>
 #include <QtCharts>
 #include <QtCharts/QLineSeries>
 #include <QtCharts/QChartView>
+#include <vector>
 using namespace std;
 
+
+//Main
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     MainWindow w;
+
+
+
 
         // test affichage CONSTANTE
         cout << "creation premiere constante: ";

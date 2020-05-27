@@ -1,20 +1,49 @@
 #include "interactionutilisateur.h"
 
+#include "constante.h"
+#include "addition.h"
+#include "soustraction.h"
+#include "division.h"
+#include "multiplication.h"
+#include "operation.h"
+#include<string.h>
+#include<stdio.h>
+#include <typeinfo>
+#include <iostream>
+#include <algorithm>
 using namespace std;
 
-InteractionUtilisateur::InteractionUtilisateur(QList<QString> *listStr)
+InteractionUtilisateur::InteractionUtilisateur()
 {
-    initialiseInteraction(listStr);
+    initialiseInteraction();
 }
 
-void InteractionUtilisateur::initialiseInteraction(QList<QString> *listStr){
-    for(int i(0); i < listStr->size() - 1; i++) {
-        analyseElement(listStr->at(i).toStdString());
-    }
-    string _str;
+InteractionUtilisateur::InteractionUtilisateur(string str)
+{
+    initialiseInteraction(str);
 }
 
 
+void InteractionUtilisateur::initialiseInteraction(){
+    cout << "S'il vous plait, entrez votre Expression terme a terme et terminez par 'p' " << endl;
+    string _str = " 5 5 +";
+     /*do{
+        cin >> _str;
+        analyseElement(_str);
+    }while(_str.compare("p"));*/
+    analyseElement(_str);
+
+}
+
+void InteractionUtilisateur::initialiseInteraction(string _str){
+
+    do{
+        analyseElement(_str);
+    }while(_str.compare("p"));
+
+
+
+}
 void InteractionUtilisateur::analyseElement(string str){
     if(isdigit(str[0]) || isdigit(str[1])){
         Constante* e = new Constante(stof(str));

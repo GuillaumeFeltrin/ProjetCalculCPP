@@ -13,7 +13,6 @@
 #include <vector>
 using namespace std;
 
-
 //Main
 int main(int argc, char *argv[])
 {

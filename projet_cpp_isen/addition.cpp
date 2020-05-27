@@ -19,3 +19,14 @@ void Addition :: affichagePolonaiseInversee(){
     cout << " ";
     _terme2->affichagePolonaiseInversee();
     cout<<" + ";}
+
+std::string Addition::affichageClassiqueStr() {
+    return " ( " + _terme1->affichageClassiqueStr()
+            + " + " + _terme2->affichageClassiqueStr() + " ) ";
+}
+
+std::string Addition::affichagePolonaiseInverseeStr() {
+    return _terme1->affichagePolonaiseInverseeStr()
+           + " " + _terme2->affichagePolonaiseInverseeStr() + " + ";
+}
+

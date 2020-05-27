@@ -19,3 +19,13 @@ void Division :: affichagePolonaiseInversee(){
     cout << " ";
     _terme2->affichagePolonaiseInversee();
     cout<<" / ";}
+
+std::string Division::affichageClassiqueStr() {
+    return " ( " + _terme1->affichageClassiqueStr()
+            + " / " + _terme2->affichageClassiqueStr() + " ) ";
+}
+
+std::string Division::affichagePolonaiseInverseeStr() {
+    return _terme1->affichagePolonaiseInverseeStr()
+           + " " + _terme2->affichagePolonaiseInverseeStr() + " / ";
+}

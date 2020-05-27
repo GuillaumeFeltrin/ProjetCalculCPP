@@ -96,7 +96,7 @@ void MainWindow::on_pushButton_clicked()
     int nbVariable=0;
     for(int i=0;i<str_expression.size();i++)
        if(isalpha(str_expression[i])) nbVariable++;
-    cout<<"Nombre de Variable:"<<nbVariable <<endl;
+    //cout<<"Nombre de Variable:"<<nbVariable <<endl;
 
     /*
     cout << str_expression <<endl;
@@ -141,9 +141,21 @@ void MainWindow::on_pushButton_clicked()
     Constante a(1);
     Constante b(4);
     Addition add(&a,&b);
+    string addStr = add.affichageClassiqueStr();
+
+    //Compte le nombre de variable dans l'expression créée dans le code.
+    int nbVariableExp=0;
+    for(int i=0;i<addStr.size();i++)
+       if(isalpha(addStr[i])) nbVariableExp++;
+
     if(expression != NULL && _minX != NULL && _maxX != NULL && _minY != NULL && _maxY != NULL){
-        affichage_graphique(&add);
-        ui->error_msg->hide();
+        //cas où le nombre de variable est nulle
+        if(nbVariableExp == 0){
+            affichage_graphique(&add);
+            ui->error_msg->hide();
+        }
+
+        //cas où le nombre de variable est non nulle
 
     }else{
         ui->error_msg->show();

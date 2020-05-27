@@ -11,6 +11,9 @@ public:
     float calcul();
     void affichageClassique();
     void affichagePolonaiseInversee();
+    std::string affichageClassiqueStr();
+    std::string affichagePolonaiseInverseeStr();
+
 
 };
 

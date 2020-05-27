@@ -21,3 +21,12 @@ void Soustraction :: affichagePolonaiseInversee(){
     _terme2->affichagePolonaiseInversee();
     cout<<" - ";}
 
+std::string Soustraction::affichageClassiqueStr() {
+    return " ( " + _terme1->affichageClassiqueStr()
+            + " - " + _terme2->affichageClassiqueStr() + " ) ";
+}
+
+std::string Soustraction::affichagePolonaiseInverseeStr() {
+    return _terme1->affichagePolonaiseInverseeStr()
+           + " " + _terme2->affichagePolonaiseInverseeStr() + " - ";
+}

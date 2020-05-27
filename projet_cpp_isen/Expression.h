@@ -13,6 +13,9 @@ public:
     virtual float calcul() = 0;
     virtual void affichageClassique() = 0;
     virtual void affichagePolonaiseInversee() = 0;
+    virtual std::string affichageClassiqueStr() { return ""; }
+    virtual std::string affichagePolonaiseInverseeStr() { return ""; }
+
 };
 
 #endif // EXPRESSION_H

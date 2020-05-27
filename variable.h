@@ -9,6 +9,7 @@ class Variable : public Expression
         Variable();
         virtual ~Variable();
         Variable(char c, float valeur);
+        Variable(char c);
         float calcul();
         void set_valeur(float c);
         void affichageClassique();

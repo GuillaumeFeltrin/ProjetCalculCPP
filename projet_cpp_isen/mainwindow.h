@@ -4,7 +4,7 @@
 #include <QMainWindow>
 #include <QLineEdit>
 #include "constante.h"
-
+#include "variable.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 
@@ -30,8 +30,6 @@ private slots:
 
     void affichage_graphique();
     void affichage_graphique(Expression *expression);
-
-
 
 private:
     Ui::MainWindow *ui;

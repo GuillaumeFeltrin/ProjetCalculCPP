@@ -77,6 +77,7 @@ void MainWindow::on_sliderAbscisses_valueChanged(int value)
 }
 
 
+
 void MainWindow::on_pushButton_clicked()
 {
     //récupération des variables
@@ -96,68 +97,66 @@ void MainWindow::on_pushButton_clicked()
     int nbVariable=0;
     for(int i=0;i<str_expression.size();i++)
        if(isalpha(str_expression[i])) nbVariable++;
-    //cout<<"Nombre de Variable:"<<nbVariable <<endl;
-
-    /*
-    cout << str_expression <<endl;
 
 
-    list<string> liste;
-    string nombre;
-    for (int i = 0; i < str_expression.size(); i++){
-        if(str_expression[i] != '+' && !isalpha(str_expression[i])){
-            nombre += str_expression[i];
-        }
-        else{
-            if(nombre != ""){
-                liste.insert(liste.end(),nombre);
-                nombre ="";
-            }
-
-        }
-    }
-    liste.insert(liste.end(),nombre);
-
-    float nbTab[liste.size()];
-    int i = 0;
-    for (string n : liste) {
-        float f = stof(n);
-        nbTab[i] = f;
-    }
-*/
-
-    /*QLineSeries * series;
-    if(nbVariable == 1 ){
-        cout << "Expression affine!" << endl;
-       series = createAffineFunction(nbTab[0], nbTab[1]);
-    }
-    if(nbVariable == 1 ){
-        cout << "Expression 2nd degres!" << endl;
-       series = create2ndPolynomeFunction(nbTab[0], nbTab[1], nbTab[2]);
-    }*/
-
-
+    Variable *var = new Variable();
     //Test avec une expression construite par code
     Constante a(1);
     Constante b(4);
-    Addition add(&a,&b);
+    Addition add(var,&b);
     string addStr = add.affichageClassiqueStr();
-
+    cout << addStr << endl;
     //après remplacer l'expression add par une expression recupérée via l'IHM
 
+
+    //Compte le nombre de variable dans l'expression créée dans le code.
+    int nbVariableExp=0;
+    for(int i=0;i<addStr.size();i++)
+       if(isalpha(addStr[i])) nbVariableExp++;
+
+
+    //verifie le formulaire
     if(expression != NULL && _minX != NULL && _maxX != NULL && _minY != NULL && _maxY != NULL){
 
-           affichage_graphique(&add);
-           ui->error_msg->hide();
 
+           //cas où on a qu'une variable
+           if(nbVariableExp == 0){
+               affichage_graphique(&add);
+               ui->error_msg->hide();
+           }
+           //cas avec une variable
+           else if(nbVariableExp == 1){
 
-        //cas où le nombre de variable est non nulle
+               QLineSeries * series  = new QLineSeries();
+               for(int i=_minX; i<_maxX; i++){
+                   var->set_valeur(i);
+                   series->append(i, add.calcul());
+               }
+               QValueAxis *axisX = new QValueAxis();
+               QValueAxis *axisY = new QValueAxis();
+               QChart *chart = new QChart();
+               axisX->setRange(_minX, _maxX);
+               axisY->setRange(_minY, _maxY);
+               chart->update();
+               chart->addSeries(series);
+               chart->setTitle(QString::fromStdString(add.affichageClassiqueStr()));
+
+               QChartView *chartView = new QChartView(chart);
+               chartView->chart()->setAxisX(axisX, series);
+               chartView->chart()->setAxisY(axisY, series);
+               chartView->setRenderHint(QPainter::Antialiasing);
+               chartView->setParent(ui->verticalFrame_2);
+               chartView->show();
+           }
+
 
     }else{
         ui->error_msg->show();
     }
 
 }
+
+
 
 //affiche l'expression passée en paramètre
 void MainWindow::affichage_graphique(Expression *exp){
@@ -168,18 +167,12 @@ void MainWindow::affichage_graphique(Expression *exp){
 
     string addStr = exp->affichageClassiqueStr();
 
-    //Compte le nombre de variable dans l'expression créée dans le code.
-    int nbVariableExp=0;
-    for(int i=0;i<addStr.size();i++)
-       if(isalpha(addStr[i])) nbVariableExp++;
 
-    //cas où on a qu'une variable
-    if(nbVariableExp == 0){
-        for (int i=_minX; i<(_maxX)+1 ; i++)
-        {
-         series->append(i, exp->calcul());
-        }
+    for (int i=_minX; i<(_maxX)+1 ; i++)
+    {
+        series->append(i, exp->calcul());
     }
+
     QChart *chart = new QChart();
     axisX->setRange(_minX, _maxX);
     axisY->setRange(_minY, _maxY);

@@ -24,7 +24,10 @@ SOURCES += \
         mainwindow.cpp \
         multiplication.cpp \
         operation.cpp \
-        soustraction.cpp
+        variable.cpp \
+        soustraction.cpp \
+        symboletable.cpp
+
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -39,7 +42,9 @@ HEADERS += \
     mainwindow.h \
     multiplication.h \
     operation.h \
-    soustraction.h
+    soustraction.h \
+    symboletable.h \
+    variable.h
 
 QT += widgets
 

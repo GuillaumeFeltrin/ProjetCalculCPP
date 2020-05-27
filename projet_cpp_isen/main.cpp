@@ -6,6 +6,7 @@
 #include "multiplication.h"
 #include "division.h"
 #include "mainwindow.h"
+#include "variable.h"
 #include <QApplication>
 #include <QtCharts>
 #include <QtCharts/QLineSeries>
@@ -22,7 +23,7 @@ int main(int argc, char *argv[])
 
 
 
-        // test affichage CONSTANTE
+       /* // test affichage CONSTANTE
         cout << "creation premiere constante: ";
         Constante b(10);
         b.affichageClassique();
@@ -97,17 +98,18 @@ int main(int argc, char *argv[])
         cout << endl;
 
 
-
-        Addition add1 = Addition(&b,&c);
+        Variable *var = new Variable();
+        Addition add1 = Addition(var,&c);
         Constante cst3(20);
         Constante cst4(40);
+
         Division add2 = Division(&cst3, &b);
         Multiplication multi = Multiplication(&add1, &add2);
         multi.affichageClassique();
         cout << endl;
         multi.affichagePolonaiseInversee();
         cout << endl;
-        cout << multi.calcul() << endl;
+        cout << multi.calcul() << endl;*/
 
     w.show();
     return a.exec();

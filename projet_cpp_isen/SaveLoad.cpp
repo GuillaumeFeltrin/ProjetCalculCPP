@@ -38,7 +38,7 @@ std::string InfixToReversePolish(std::string toModify) {
     std::string currentElement = "";
     std::string reversePolish = "";
     formulaStack.push("start");
-    for (int index = 0; index < toModify.length(); index++) {
+    for (int index = 0; index < (int)toModify.length(); index++) {
         if (toModify[index] == '(') formulaStack.push("(");
         else if (toModify[index] == ')') {
             while ((formulaStack.top() != "start")&&(formulaStack.top() != "(")) {

@@ -5,6 +5,8 @@
 #include "soustraction.h"
 #include "multiplication.h"
 #include "division.h"
+#include "variable.h"
+#include "symboletable.h"
 #include "iostream"
 using namespace std;
 
@@ -15,79 +17,80 @@ int main(int argc, char *argv[])
     QCoreApplication a(argc, argv);
 
 
-    // test affichage CONSTANTE
-    cout << "creation premiere constante: ";
-    Constante b(10);
-    b.affichageClassique();
-    cout << endl;
-    cout << "creation deuxieme constante: ";
-    Constante c(20);
-    c.affichageClassique();
-    cout << endl << endl;
+    // TEST CREATION DE VARIABLES
+        cout << " \n x prend la valeur 2 et y prend la valeur 3" << endl;
+        Constante c1(10);
+        Constante c2(2);
 
+        //Creation d'une variable 'x'
+        Variable x1('x',2);
 
-    // TEST ADDITION
-    Addition d(&b, &c);
+        Multiplication m2(&c2,&x1);
+        Constante c5(5);
+        Constante c6(3);
 
-    cout << "affichage classique addition : ";
-    d.affichageClassique();
-    cout << endl;
+        Variable y1('y',3);
 
-    cout <<"affichage polonaise inversee : ";
-    d.affichagePolonaiseInversee();
-    cout << endl;
+        Multiplication m3(&c6,&y1);
+        Addition add1(&m2,&c5);
+        Addition add2(&add1,&m3);
+        add2.affichageClassique();
+         cout << "      ";
+        add2.affichagePolonaiseInversee();
+        cout << "      = "<< add2.calcul() << endl;
 
-    cout << "affichage classique : ";
-    cout << d.calcul() << endl;
-    cout << endl;
+        cout << "\non change les valeurs de x et y : x prend la valeur 4 et y prend la valeur 10" << endl;
+        x1.set_valeur(4);
+        y1.set_valeur(10);
+        Multiplication m4(&c6,&y1);
+        Addition add3(&m2,&c5);
+        Addition add4(&add1,&m3);
+        add4.affichageClassique();
+         cout << "      ";
+        add4.affichagePolonaiseInversee();
+        cout << "      = "<< add4.calcul() << endl;
 
+        // TEST TABLE DES SYMBOLES
+        Symboletable st;
+           char check;
+           cout << "**** EXEMPLE SYMBOL_TABLE ****\n";
 
-    // TEST SOUSTRACTION
-    Soustraction e(&b, &c);
+           // insert 'x' = 4
+           if (st.insert('x', 4))
+               cout << "creation success \n\n";
+           else
+               cout << "\nFailed to insert.\n";
 
-    cout << "affichage classique soustraction : ";
-    e.affichageClassique();
-    cout << endl;
+           // insert 'y' = 5
+           if (st.insert('y', 5))
+               cout << " creation success \n\n";
+           else
+               cout << "\nFailed to insert\n";
 
-    cout <<"affichage polonaise inversee : ";
-    e.affichagePolonaiseInversee();
-    cout << endl;
+           // find 'x'
+           check = st.find('x');
+           if (check != -1)
+               cout << "Variable Is present\n";
+           else
+               cout << "\nVariable Not Present\n";
 
-    cout << "affichage classique : ";
-    cout << e.calcul() << endl;
-    cout << endl;
+           // delete 'x'
+           if (st.deleteRecord('x'))
+               cout << "x variable is deleted\n";
+           else
+               cout << "\nFailed to delete\n";
 
+           // modify 'y'
+           if (st.modify( 'y', 1))
+               cout << "\n Number Identifier modified\n";
 
-    // TEST MULTIPLICATION
-    Multiplication f(&b, &c);
+           // find and print 'number'
+           check = st.find('y');
+           if (check != -1)
+               cout << "Variable y is present\n";
+           else
+               cout << "\nVariable not Present";
 
-    cout << "affichage classique multiplication : ";
-    f.affichageClassique();
-    cout << endl;
-
-    cout <<"affichage polonaise inversee : ";
-    f.affichagePolonaiseInversee();
-    cout << endl;
-
-    cout << "affichage classique : ";
-    cout << f.calcul() << endl;
-    cout << endl;
-
-
-    // TEST MULTIPLICATION
-    Division g(&b, &c);
-
-    cout << "affichage classique division : ";
-    g.affichageClassique();
-    cout << endl;
-
-    cout <<"affichage polonaise inversee : ";
-    g.affichagePolonaiseInversee();
-    cout << endl;
-
-    cout << "affichage classique : ";
-    cout << g.calcul() << endl;
-    cout << endl;
 
 
     // exécution application

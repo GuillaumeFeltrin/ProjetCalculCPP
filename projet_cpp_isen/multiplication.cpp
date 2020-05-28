@@ -1,7 +1,9 @@
 #include "multiplication.h"
 
 Multiplication::Multiplication(Expression *_terme1, Expression *_terme2):
-    Operation(_terme1, _terme2)  {}
+    Operation(_terme1, _terme2)  {
+        _symbol = "*";
+    }
 
 float Multiplication :: calcul() {
   return _terme1->calcul() * _terme2->calcul();

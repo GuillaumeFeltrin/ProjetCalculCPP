@@ -3,13 +3,13 @@
 
 #include "operation.h"
 
-class Multiplication : Operation
+class Multiplication : public Operation
 {
-public:
-    Multiplication(Expression *_terme1, Expression *_terme2);
-    float calcul();
-    void affichageClassique();
-    void affichagePolonaiseInversee();
+    public:
+        Multiplication(Expression *_terme1, Expression *_terme2);
+        float calcul();
+        void affichageClassique();
+        void affichagePolonaiseInversee();
 };
 
 #endif // MULTIPLICATION_H

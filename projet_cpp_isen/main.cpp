@@ -90,10 +90,10 @@ int main(int argc, char *argv[])
     cout << endl;
 
     //TEST POUR LE GROUPE 8
-    Constante c = Constante(3);
+    Constante c1 = Constante(3);
        Constante c2 = Constante(6);
 
-       Variable v = Variable('c',3.0);
+       Variable v = Variable('v',3.0);
 
        /*Addition add1(&v, &c);
        Addition add2(&c,&c2);
@@ -127,8 +127,8 @@ int main(int argc, char *argv[])
        div2.simplifier()->affichageClassique();cout <<endl;
        div3.simplifier()->affichageClassique();cout <<endl;*/
 
-       Division div = Division(&c2, &c);
-       Addition add = Addition(&v, &c);
+       Division div = Division(&c2, &c1);
+       Addition add = Addition(&v, &c1);
 
        //Soustraction sous = Soustraction(&add, &div);
 

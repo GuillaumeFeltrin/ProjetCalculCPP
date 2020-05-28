@@ -95,32 +95,32 @@ int main(int argc, char *argv[])
 
     Variable v = Variable('v',3.0);
 
-    Addition add1(&v, &c);
-    Addition add2(&c,&c2);
+    Addition add1(&v, &c1);
+    Addition add2(&c1,&c2);
     Addition add3(&add1,&add2);
 
     add1.simplifier()->affichageClassique();cout <<endl;
     add2.simplifier()->affichageClassique();cout <<endl;
     add3.simplifier()->affichageClassique();cout <<endl;
 
-    Soustraction sous1(&v, &c);
-    Soustraction sous2(&c2,&c);
+    Soustraction sous1(&v, &c1);
+    Soustraction sous2(&c2,&c1);
     Soustraction sous3(&sous1,&sous2);
 
     sous1.simplifier()->affichageClassique();cout <<endl;
     sous2.simplifier()->affichageClassique();cout <<endl;
     sous3.simplifier()->affichageClassique();cout <<endl;
 
-    Multiplication mult1(&v, &c);
-    Multiplication mult2(&c2,&c);
+    Multiplication mult1(&v, &c1);
+    Multiplication mult2(&c2,&c1);
     Multiplication mult3(&mult1,&mult2);
 
     mult1.simplifier()->affichageClassique();cout <<endl;
     mult2.simplifier()->affichageClassique();cout <<endl;
     mult3.simplifier()->affichageClassique();cout <<endl;
 
-    Division div1(&v, &c);
-    Division div2(&c2,&c);
+    Division div1(&v, &c1);
+    Division div2(&c2,&c1);
     Division div3(&div1,&div2);
 
     div1.simplifier()->affichageClassique();cout <<endl;

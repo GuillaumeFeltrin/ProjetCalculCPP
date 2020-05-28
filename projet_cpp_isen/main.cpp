@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
 {
     // creation application
     QCoreApplication a(argc, argv);
-    QApplication app(argc, argv);
+    //QApplication app(argc, argv);
 
     // test affichage CONSTANTE
     cout << "creation premiere constante: ";

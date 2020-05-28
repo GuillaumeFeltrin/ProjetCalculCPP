@@ -1,4 +1,7 @@
 #include "addition.h"
+#include "constante.h"
+#include "iostream"
+using namespace std;
 
 Addition::Addition(Expression *_terme1, Expression *_terme2) :
     Operation(_terme1, _terme2)  {}
@@ -35,11 +38,11 @@ Expression* Addition :: simplifier()
 }
 
 void Addition :: affichageClassique(){
-    std::cout << "(";
+    cout << "(";
     _terme1->affichageClassique();
-    std::cout << " + ";
+    cout << " + ";
     _terme2->affichageClassique();
-    std::cout << ")";}
+    cout << ")";}
 
 void Addition :: affichagePolonaiseInversee(){
     _terme1->affichagePolonaiseInversee();

@@ -1,4 +1,6 @@
 #include "constante.h"
+#include "iostream"
+using namespace std;
 
 Constante::Constante(float val)
 {

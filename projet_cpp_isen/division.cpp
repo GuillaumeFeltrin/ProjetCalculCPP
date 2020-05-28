@@ -1,4 +1,7 @@
 #include "division.h"
+#include "iostream"
+using namespace std;
+#include "constante.h"
 
 Division::Division(Expression *_terme1, Expression *_terme2) :
     Operation(_terme1, _terme2)  {}
@@ -35,11 +38,11 @@ Expression* Division :: simplifier()
 }
 
 void Division :: affichageClassique(){
-    std::cout << "(";
+    cout << "(";
     _terme1->affichageClassique();
-    std::cout << " / ";
+    cout << " / ";
     _terme2->affichageClassique();
-    std::cout << ")";}
+    cout << ")";}
 
 void Division :: affichagePolonaiseInversee(){
     _terme1->affichagePolonaiseInversee();

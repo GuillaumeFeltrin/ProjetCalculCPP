@@ -128,10 +128,12 @@ int main(int argc, char *argv[])
 
        Division div = Division(&c2, &c);
        Addition add = Addition(&v, &c);
-       Soustraction sous = Soustraction(&add, &div);
-       Multiplication mult = Multiplication(&sous, &add);
 
-       mult.simplifier()->affichageClassique();cout <<endl;
+       //Soustraction sous = Soustraction(&add, &div);
+
+       //Multiplication mult = Multiplication(&sous, &add);
+
+       //mult.simplifier()->affichageClassique();cout <<endl;
 
 
 

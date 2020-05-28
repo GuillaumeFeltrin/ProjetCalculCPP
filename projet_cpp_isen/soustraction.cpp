@@ -1,5 +1,7 @@
 #include "soustraction.h"
-
+#include "iostream"
+using namespace std;
+#include "constante.h"
 
 Soustraction::Soustraction(Expression *_terme1, Expression *_terme2) :
     Operation(_terme1, _terme2)  {}

@@ -1,6 +1,5 @@
-#include "Variable.h"
-#include <iostream>
-#include <string>
+#include "variable.h"
+#include "iostream"
 using namespace std;
 
 Variable::Variable()

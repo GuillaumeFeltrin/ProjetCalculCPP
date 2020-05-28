@@ -6,7 +6,7 @@ Operation::Operation(Expression* a, Expression* b)
     _terme2 = b;
 }
 
-bool Operations::isConstante()
+bool Operation::isConstante()
 {
     return false;
 }

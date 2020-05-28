@@ -11,6 +11,8 @@ public:
     Constante(float val);
     virtual ~Constante() {}
     float calcul();
+    bool isConstante();
+    Expression* simplifier();
     void affichageClassique();
     void affichagePolonaiseInversee();
     std::string affichageClassiqueStr();

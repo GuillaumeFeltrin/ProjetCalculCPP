@@ -1,8 +1,21 @@
 #include "constante.h"
+#include "iostream"
+using namespace std;
 
 Constante::Constante(float val)
 {
     _valeur = val;
+}
+
+Expression* Constante :: simplifier()
+{
+    Constante *con = new Constante(_valeur);
+    return con;
+}
+
+bool Constante:: isConstante()
+{
+    return true;
 }
 
 void Constante::affichageClassique(){

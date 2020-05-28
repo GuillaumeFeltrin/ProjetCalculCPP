@@ -5,6 +5,7 @@
 #include "soustraction.h"
 #include "multiplication.h"
 #include "division.h"
+#include "variable.h"
 #include "iostream"
 using namespace std;
 

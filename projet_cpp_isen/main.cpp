@@ -10,6 +10,8 @@
 #include "multiplication.h"
 #include "division.h"
 #include "iostream"
+#include "window.h"
+#include "mainwindow.h"
 
 
 using namespace std;
@@ -26,6 +28,7 @@ int main(int argc, char *argv[])
         Window window;
         // exécution application
         window.show();
+
     
     return app.exec();
 }

@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include "window.h"
 
 MainWindow::MainWindow() : QWidget()  // spécification du constructeur
 {
@@ -58,7 +59,6 @@ void MainWindow::Redirect()
 void MainWindow::ouvrirExpClassique()
 {
     QMessageBox::information(this, "Classique", "Classique");
-
 }
 
 void MainWindow::ouvrirExpPolo()

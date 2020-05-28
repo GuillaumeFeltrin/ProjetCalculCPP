@@ -5,7 +5,13 @@
 #include "soustraction.h"
 #include "multiplication.h"
 #include "division.h"
-#include "window.h"
+#include "carre.h"
+#include "inverse.h"
+#include "logneperien.h"
+#include "puissance.h"
+#include "racinecarre.h"
+#include "valeurabsolue.h"
+#include "oppose.h"
 #include "iostream"
 using namespace std;
 
@@ -75,26 +81,111 @@ int main(int argc, char *argv[])
     cout << endl;
 
 
-    // TEST MULTIPLICATION
-    Division g(&b, &c);
+    // TEST CARRE
+    Carre h(&b);
 
-    cout << "affichage classique division : ";
-    g.affichageClassique();
+    cout << "affichage classique carre : ";
+    h.affichageClassique();
     cout << endl;
 
     cout <<"affichage polonaise inversee : ";
-    g.affichagePolonaiseInversee();
+    h.affichagePolonaiseInversee();
     cout << endl;
 
     cout << "affichage classique : ";
-    cout << g.calcul() << endl;
+    cout << h.calcul() << endl;
     cout << endl;
 
-    // Objet de la class Window qui hérite de QWidget
-        Window window;
+    // TEST INVERSE
+    Inverse i(&b);
 
-        window.show();
-    return app.exec();
+    cout << "affichage classique inverse : ";
+    i.affichageClassique();
+    cout << endl;
+
+    cout <<"affichage polonaise inversee : ";
+    i.affichagePolonaiseInversee();
+    cout << endl;
+
+    cout << "affichage classique : ";
+    cout << i.calcul() << endl;
+    cout << endl;
+
+    // TEST LOGN
+    LogNeperien j(&b);
+
+    cout << "affichage classique logn() : ";
+    j.affichageClassique();
+    cout << endl;
+
+    cout << "affichage polonaise inversee : ";
+    j.affichagePolonaiseInversee();
+    cout << endl;
+
+    cout << "affichage classique : ";
+    cout << j.calcul() << endl;
+    cout << endl;
+
+    // TEST OPPOSE
+    Oppose k(&b);
+
+    cout << "affichage classique oppose : ";
+    k.affichageClassique();
+    cout << endl;
+
+    cout << "affichage polonaise inversee : ";
+    k.affichagePolonaiseInversee();
+    cout << endl;
+
+    cout << "affichage classique : ";
+    cout << k.calcul() << endl;
+    cout << endl;
+
+    // TEST RACINE
+    RacineCarre l(&b);
+
+    cout << "affichage classique racine : ";
+    l.affichageClassique();
+    cout << endl;
+
+    cout << "affichage polonaise inversee : ";
+    l.affichagePolonaiseInversee();
+    cout << endl;
+
+    cout << "affichage classique : ";
+    cout << l.calcul() << endl;
+    cout << endl;
+
+    // TEST ABSOLUE
+    ValeurAbsolue m(&b);
+
+    cout << "affichage classique val absolue : ";
+    m.affichageClassique();
+    cout << endl;
+
+    cout << "affichage polonaise inversee : ";
+    m.affichagePolonaiseInversee();
+    cout << endl;
+
+    cout << "affichage classique : ";
+    cout << m.calcul() << endl;
+    cout << endl;
+
+    // TEST PUISSANCE
+    Puissance n(&b, &c);
+
+    cout << "affichage classique puissance : ";
+    n.affichageClassique();
+    cout << endl;
+
+    cout << "affichage polonaise inversee : ";
+    n.affichagePolonaiseInversee();
+    cout << endl;
+
+    cout << "affichage classique : ";
+    cout << n.calcul() << endl;
+    cout << endl;
+
     // exécution application
     //return a.exec();
 }

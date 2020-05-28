@@ -1,8 +1,8 @@
 QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
-
 CONFIG += c++11
+#CONFIG -= app_bundle
 
 # The following define makes your compiler emit warnings if you use
 # any Qt feature that has been marked deprecated (the exact warnings
@@ -25,7 +25,9 @@ SOURCES += \
     soustraction.cpp \
     symboletable.cpp \
     variable.cpp \
+    mainwindow.cpp \
     window.cpp
+    
 
 HEADERS += \
     Expression.h \
@@ -33,6 +35,7 @@ HEADERS += \
     constante.h \
     division.h \
     interactionutilisateur.h \
+    mainwindow.h \
     multiplication.h \
     operation.h \
     soustraction.h \
@@ -42,6 +45,7 @@ HEADERS += \
 
 FORMS += \
     window.ui
+    mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

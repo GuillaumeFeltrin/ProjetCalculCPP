@@ -1,4 +1,6 @@
 #include <QCoreApplication>
+#include <QApplication>
+#include <QtWidgets>
 #include "Expression.h"
 #include "constante.h"
 #include "addition.h"
@@ -12,7 +14,7 @@ using namespace std;
 int main(int argc, char *argv[])
 {
     // creation application
-    QCoreApplication a(argc, argv);
+    /*QCoreApplication a(argc, argv);
 
 
     // test affichage CONSTANTE
@@ -91,5 +93,51 @@ int main(int argc, char *argv[])
 
 
     // exécution application
-    return a.exec();
+    return a.exec();*/
+
+    QApplication app(argc, argv);
+
+    QWidget fenetre;
+
+    // 1 : Créer le QTabWidget
+    QTabWidget *onglets = new QTabWidget(&fenetre);
+    onglets->setGeometry(50,50, 500, 400);
+
+    // 2 : Créer les pages, en utilisant un widget parent pour contenir chacune des pages
+    QWidget *page1 = new QWidget;
+    QWidget *page2 = new QWidget;
+    QWidget *page3 = new QWidget; // Comme un QLabel est aussi un QWidget (il en hérite), on peut aussi s'en servir de page
+
+    // 3 : Créer le contenu des pages de widgets
+
+        // Page 1
+            QLineEdit *saisie = new QLineEdit("Entrez votre expression");
+            QPushButton *bouton1 = new QPushButton("Afficher l'expression");
+            QPushButton *bouton2 = new QPushButton("Afficher la valeur ");
+            QPushButton *bouton3 = new QPushButton("Simplifier l'expression ");
+
+            QVBoxLayout *vbox1 = new QVBoxLayout;
+            vbox1->addWidget(saisie);
+            vbox1->addWidget(bouton1);
+            vbox1->addWidget(bouton2);
+            vbox1->addWidget(bouton3);
+
+            page1->setLayout(vbox1);
+
+
+        //Ajouter les fonctions du groupe 2
+
+        // Page 2
+
+        // Page 3
+
+
+    // 4 : ajouter les onglets au QTabWidget, en indiquant la page qu'ils contiennent
+    onglets->addTab(page1, "Affichage de l'expression ");
+    onglets->addTab(page2, "Graphique 2D et 3D");
+    onglets->addTab(page3, "Sauvegarde");
+
+    fenetre.show();
+
+    return app.exec();
 }

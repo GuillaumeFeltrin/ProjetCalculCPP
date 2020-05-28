@@ -3,7 +3,7 @@
 
 #include "operation.h"
 
-class Division : Operation
+class Division : public Operation
 {
 public:
     Division(Expression *_terme1, Expression *_terme2);

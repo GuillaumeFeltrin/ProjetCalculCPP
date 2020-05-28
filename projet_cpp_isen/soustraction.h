@@ -3,7 +3,7 @@
 
 #include "operation.h"
 
-class Soustraction : Operation
+class Soustraction : public Operation
 {
 public:
     Soustraction(Expression *_terme1, Expression *_terme2);

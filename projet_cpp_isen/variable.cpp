@@ -67,3 +67,12 @@ std::string Variable::affichagePolonaiseInverseeStr() {
     std::string str = std::string(&_csteV);
     return str;
 }
+
+Expression* Variable::simplifier(){
+    Variable* var = new Variable(_csteV, _valeur);
+    return var;
+}
+
+bool Variable::isConstante(){
+    return false;
+}

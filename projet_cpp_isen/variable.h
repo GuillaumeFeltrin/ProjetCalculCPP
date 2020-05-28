@@ -18,6 +18,8 @@ class Variable : public Expression
         void affichagePolonaiseInversee();
         std::string affichageClassiqueStr();
         std::string affichagePolonaiseInverseeStr();
+        Expression* simplifier();
+        bool isConstante();
 
         Variable* next;
 

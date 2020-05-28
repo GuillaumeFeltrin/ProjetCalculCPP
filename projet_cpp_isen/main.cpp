@@ -106,14 +106,14 @@ int main(int argc, char *argv[])
 
 
     //GROUPE 8
-    Constante c1 = Constante(3);
-    Constante c2 = Constante(6);
+    Constante c1_8 = Constante(3);
+    Constante c2_8 = Constante(6);
 
     Variable v = Variable('v',3.0);
 
-    Addition add1(&v, &c1);
-    Addition add2(&c1,&c2);
-    Addition add3(&add1,&add2);
+    Addition add1_8(&v, &c1);
+    Addition add2_8(&c1,&c2);
+    Addition add3_8(&add1,&add2);
 
     add1.simplifier()->affichageClassique();cout <<endl;
     add2.simplifier()->affichageClassique();cout <<endl;

@@ -5,14 +5,17 @@
 #include "soustraction.h"
 #include "multiplication.h"
 #include "division.h"
+#include "IHM3D.h"
 #include "iostream"
 using namespace std;
 
-//Main
 int main(int argc, char *argv[])
 {
+
+    IHM3D(argc,argv);
+
     // creation application
-    QCoreApplication a(argc, argv);
+   /* QCoreApplication a(argc, argv);
 
 
     // test affichage CONSTANTE
@@ -91,5 +94,5 @@ int main(int argc, char *argv[])
 
 
     // exécution application
-    return a.exec();
+    return a.exec();*/
 }

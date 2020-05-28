@@ -104,7 +104,7 @@ bool Symboletable::deleteRecord(char id)
 }
 
 // Function to check existence of an id
-char Symboletable::find(char id)
+int Symboletable::find(char id)
 {
     int index = hashf(id);
     Variable* start = list[index];
@@ -116,7 +116,7 @@ char Symboletable::find(char id)
 
         if (start->_csteV == id) {
             cout << "Found " << id;
-            return true;
+            return start->_valeur;
         }
 
         start = start->next;

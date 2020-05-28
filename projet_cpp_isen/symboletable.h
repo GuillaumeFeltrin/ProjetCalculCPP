@@ -12,7 +12,7 @@ class Symboletable : public Variable
 
         int hashf(char id); // hash function
         bool insert(char id, float value);
-        char find(char id);
+        int find(char id);
         bool deleteRecord(char id);
         bool modify(char id, float newValue);
 

@@ -81,13 +81,14 @@ int main(int argc, char *argv[])
                cout << "\nFailed to delete\n";
 
            // modify 'y'
-           if (st.modify( 'y', 1))
+           if (st.modify( 'y', 10))
                cout << "\n Number Identifier modified\n";
 
            // find and print 'number'
-           check = st.find('y');
+           int value=0;
+           value = st.find('y');
            if (check != -1)
-               cout << "Variable y is present\n";
+               cout << "Variable y value: " << value;
            else
                cout << "\nVariable not Present";
 

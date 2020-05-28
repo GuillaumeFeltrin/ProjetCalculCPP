@@ -6,21 +6,30 @@
 #include "division.h"
 #include "multiplication.h"
 #include "operation.h"
+#include "variable.h"
+#include "symboletable.h"
 
 using namespace std;
 
 InteractionUtilisateur::InteractionUtilisateur()
 {
+    _table = new Symboletable();
     initialiseInteraction();
 }
 
+InteractionUtilisateur::InteractionUtilisateur(Symboletable* table){
+    _table = table;
+    initialiseInteraction();
+}
+
+
 void InteractionUtilisateur::initialiseInteraction(){
-    cout << "S'il vous plait, entrez votre Expression terme a terme et terminez par 'p' " << endl;
+    cout << "S'il vous plait, entrez votre Expression terme a terme et terminez par '*p' " << endl;
     string _str;
     do{
         cin >> _str;
         analyseElement(_str);
-    }while(_str.compare("p"));
+    }while(_str.compare("*p"));
 }
 
 
@@ -37,6 +46,8 @@ void InteractionUtilisateur::analyseElement(string str){
         gestionMultiplication();
     else if(str == _div)
         gestionDivision();
+    else if(isalpha(str[0]))
+        gestionVariable(str[0]);
 }
 
 void InteractionUtilisateur::gestionSomme(){
@@ -93,4 +104,26 @@ void InteractionUtilisateur::gestionMultiplication(){
     Multiplication* m = new Multiplication(expression1,expression2);
     _pile.push(to_string(m->calcul()));
     _pileExpression.push(m);
+}
+
+void InteractionUtilisateur::gestionVariable(char str){
+    //Recherche de la variable dans la table des symboles
+    if(_table->find(str) == -1){ //Variable non trouvé
+        //Creation d'une nouvelle variable et insertion dans le tableau
+        Variable* var = new Variable(str);
+        _table->insert(var->_csteV, var->_valeur);
+        _pileExpression.push(var);
+    }else{
+        //recherche de la variable dans la table
+        int index = _table->hashf(str);
+        Variable* start = _table->list[index];
+        while (start != NULL) {
+
+            if (start->_csteV == str) {
+                _pileExpression.push(start);
+            }
+
+            start = start->next;
+        }
+    }
 }

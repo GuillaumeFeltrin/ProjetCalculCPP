@@ -6,6 +6,7 @@
 #include "multiplication.h"
 #include "division.h"
 #include "interactionutilisateur.h"
+#include "symboletable.h"
 #include "iostream"
 using namespace std;
 
@@ -91,9 +92,14 @@ int main(int argc, char *argv[])
     cout << g.calcul() << endl;
     cout << endl;
 */
+    cout << "--------TEST INSERTION TABLE SYMBOLE--------" << endl;
+    Symboletable* table = new Symboletable();
+    Variable* var = new Variable('y',4);
+    table->insert(var->_csteV, var->_valeur);
+    cout << endl;
 
     cout << "--------TEST INTERACTION UTILISATEUR--------" << endl;
-    InteractionUtilisateur* inter = new InteractionUtilisateur();
+    InteractionUtilisateur* inter = new InteractionUtilisateur(table);
     Expression* expression = inter->getExpression();
     cout << "Affichage Polonaise Inversee :";
     expression->affichagePolonaiseInversee();

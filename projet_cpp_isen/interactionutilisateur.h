@@ -3,6 +3,7 @@
 
 #include <stack>
 #include "Expression.h"
+#include "symboletable.h"
 
 using namespace std;
 class InteractionUtilisateur
@@ -16,6 +17,7 @@ class InteractionUtilisateur
 
 public:
     InteractionUtilisateur();
+    InteractionUtilisateur(Symboletable* table);
     Expression* getExpression(){return _pileExpression.top();}
 
 private:
@@ -25,9 +27,11 @@ private:
     void gestionSoustraction();
     void gestionMultiplication();
     void gestionDivision();
+    void gestionVariable(char str);
 
     stack<string> _pile;
     stack<Expression*> _pileExpression;
+    Symboletable* _table;
 
 };
 

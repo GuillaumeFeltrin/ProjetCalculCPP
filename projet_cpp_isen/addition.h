@@ -7,6 +7,7 @@
 class Addition : Operation
 {
 public:
+    virtual ~Addition(){}
     Addition(Expression *_terme1, Expression *_terme2);
     float calcul();
     bool isConstante();

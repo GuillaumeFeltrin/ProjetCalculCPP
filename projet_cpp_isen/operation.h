@@ -11,6 +11,7 @@ protected:
     Expression* _terme2;
 
 public:
+    virtual ~Operation(){}
     Operation(Expression* a, Expression* b);
     bool isConstante();
 };

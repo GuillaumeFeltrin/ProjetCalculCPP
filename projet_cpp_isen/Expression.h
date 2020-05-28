@@ -11,8 +11,8 @@ public:
     Expression(){}
     virtual ~Expression(){}
     virtual float calcul() = 0;
-    virtual bool isConstante();
-    virtual Expression* simplifier();
+    virtual bool isConstante() = 0;
+    virtual Expression* simplifier() = 0;
     virtual void affichageClassique() = 0;
     virtual void affichagePolonaiseInversee() = 0;
 };

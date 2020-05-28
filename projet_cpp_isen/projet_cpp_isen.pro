@@ -22,7 +22,8 @@ SOURCES += \
         multiplication.cpp \
         operation.cpp \
         soustraction.cpp \
-        variable.cpp
+        variable.cpp \
+        Expression.cpp
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

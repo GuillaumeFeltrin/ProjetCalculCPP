@@ -9,11 +9,11 @@
 #include <QTextEdit>
 #include <QString>
 #include <QList>
-#include "Division.h"
-#include "Addition.h"
-#include "Soustraction.h"
-#include "Multiplication.h"
-#include "Constante.h"
+#include "division.h"
+#include "addition.h"
+#include "soustraction.h"
+#include "multiplication.h"
+#include "constante.h"
 #include "interactionutilisateur.h"
 
 class Window : public QWidget
@@ -25,15 +25,18 @@ public:
 private slots:
     void valider();
     void suivante();
+    void ajouter();
 
 private:
     QLabel *_resultat;
     QLabel *_classique;
     QLabel *_polonaise;
     QTextEdit *_champ;
+    QTextEdit *_variableValeur;
+    QTextEdit *_variableNom;
     QList<QString> _elements;
-    InteractionUtilisateur * _interactionUtilisateur;
-
+    InteractionUtilisateur *_interactionUtilisateur;
+    Symboletable *_table;
 signals:
 
 

@@ -23,6 +23,8 @@ SOURCES += \
     main.cpp \
     multiplication.cpp \
     soustraction.cpp \
+    symboletable.cpp \
+    variable.cpp \
     window.cpp
 
 HEADERS += \
@@ -34,6 +36,8 @@ HEADERS += \
     multiplication.h \
     operation.h \
     soustraction.h \
+    symboletable.h \
+    variable.h \
     window.h
 
 FORMS += \

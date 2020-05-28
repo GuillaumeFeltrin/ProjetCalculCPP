@@ -4,6 +4,12 @@ using namespace std;
 
 InteractionUtilisateur::InteractionUtilisateur(QList<QString> *listStr)
 {
+    _table = new Symboletable();
+    initialiseInteraction(listStr);
+}
+
+InteractionUtilisateur::InteractionUtilisateur(QList<QString> *listStr, Symboletable* table){
+    _table = table;
     initialiseInteraction(listStr);
 }
 
@@ -11,7 +17,6 @@ void InteractionUtilisateur::initialiseInteraction(QList<QString> *listStr){
     for(int i(0); i < listStr->size() - 1; i++) {
         analyseElement(listStr->at(i).toStdString());
     }
-    string _str;
 }
 
 
@@ -28,6 +33,8 @@ void InteractionUtilisateur::analyseElement(string str){
         gestionMultiplication();
     else if(str == _div)
         gestionDivision();
+    else if(isalpha(str[0]))
+        gestionVariable(str[0]);
 }
 
 void InteractionUtilisateur::gestionSomme(){
@@ -85,3 +92,26 @@ void InteractionUtilisateur::gestionMultiplication(){
     _pile.push(to_string(m->calcul()));
     _pileExpression.push(m);
 }
+
+void InteractionUtilisateur::gestionVariable(char str){
+    //Recherche de la variable dans la table des symboles
+    if(_table->find(str) == -1){ //Variable non trouvé
+        //Creation d'une nouvelle variable et insertion dans le tableau
+        Variable* var = new Variable(str);
+
+        _table->insert(var->getCsteV(), var->getValeur());
+        _pileExpression.push(var);
+    }else{
+        //recherche de la variable dans la table
+        int index = _table->hashf(str);
+        Variable* start = _table->list[index];
+        while (start != NULL) {
+            if (start->getCsteV() == str) {
+                _pileExpression.push(start);
+            }
+
+            start = start->next;
+        }
+    }
+}
+

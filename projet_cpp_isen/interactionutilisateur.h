@@ -9,6 +9,9 @@
 #include "division.h"
 #include "multiplication.h"
 #include "operation.h"
+#include "variable.h"
+#include "symboletable.h"
+
 #include <QList>
 #include <QString>
 
@@ -22,6 +25,7 @@ class InteractionUtilisateur
 
 public:
     InteractionUtilisateur(QList<QString> *listStr);
+    InteractionUtilisateur(QList<QString> *listStr, Symboletable *table);
     Expression* getExpression(){return _pileExpression.top();}
 
 private:
@@ -31,9 +35,11 @@ private:
     void gestionSoustraction();
     void gestionMultiplication();
     void gestionDivision();
+    void gestionVariable(char str);
 
     stack<string> _pile;
     stack<Expression*> _pileExpression;
+    Symboletable* _table;
 
 };
 

@@ -15,12 +15,11 @@
 #include "iostream"
 using namespace std;
 
-//Main
 int main(int argc, char *argv[])
 {
     // creation application
     QCoreApplication a(argc, argv);
-    //QApplication app(argc, argv);
+
 
     // test affichage CONSTANTE
     cout << "creation premiere constante: ";
@@ -186,6 +185,22 @@ int main(int argc, char *argv[])
     cout << n.calcul() << endl;
     cout << endl;
 
+    cout << "--------TEST INSERTION TABLE SYMBOLE--------" << endl;
+    Symboletable* table = new Symboletable();
+    Variable* var = new Variable('y',4);
+    table->insert(var->_csteV, var->_valeur);
+    cout << endl;
+
+    cout << "--------TEST INTERACTION UTILISATEUR--------" << endl;
+    InteractionUtilisateur* inter = new InteractionUtilisateur(table);
+    Expression* expression = inter->getExpression();
+    cout << "Affichage Polonaise Inversee :";
+    expression->affichagePolonaiseInversee();
+    cout << endl << "Affichage Classique :";
+    expression->affichageClassique();
+    cout << endl << "Resultat :" << expression->calcul() << endl;
+    cout << "---------FIN DU TEST-----------" << endl;
+
     // exécution application
-    //return a.exec();
+    return a.exec();
 }

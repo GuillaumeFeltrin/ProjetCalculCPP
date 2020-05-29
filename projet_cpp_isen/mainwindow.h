@@ -20,7 +20,6 @@ public:
 private slots:
 
     void on_sliderAbscisses_valueChanged(int value);
-
     void on_pushButton_clicked();
 
     void affichage_graphique();

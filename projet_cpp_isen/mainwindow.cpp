@@ -18,13 +18,11 @@ MainWindow::MainWindow(QWidget *parent, float resultat, Window * window)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    //ui->parametres->setFont(QFont("Arial", 10));
     resultat_calcul = resultat;
     abscisseValue = new QLineEdit();
     _window = window;
     _inter = window->getInteractionUtilisateur();
     _exp = window->getInteractionUtilisateur()->getExpression();
-
 }
 
 

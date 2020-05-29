@@ -19,8 +19,6 @@ public:
     void affichagePolonaiseInversee();
     std::string affichageClassiqueStr();
     std::string affichagePolonaiseInverseeStr();
-        Addition(Expression *_terme1, Expression *_terme2);
-
 };
 
 #endif // ADDITION_H

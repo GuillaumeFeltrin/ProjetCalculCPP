@@ -20,6 +20,7 @@ class Variable : public Expression
         std::string affichagePolonaiseInverseeStr();
         Expression* simplifier();
         bool isConstante();
+        //string ToString();
 
         Variable* next;
 

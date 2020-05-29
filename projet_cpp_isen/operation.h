@@ -13,11 +13,11 @@ class Operation : public Expression
     protected:
         Expression * _terme1;
         Expression * _terme2;
-        string _symbol;
+        //string _symbol;
 
     public:
 
-        std::string ToString();
+        //std::string ToString();
 };
 
 #endif // OPERATION_H

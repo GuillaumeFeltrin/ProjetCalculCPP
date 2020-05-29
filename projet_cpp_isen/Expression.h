@@ -22,7 +22,7 @@ class Expression
         virtual std::string affichagePolonaiseInverseeStr() { return ""; }
         virtual Expression* simplifier() = 0;
         virtual bool isConstante() = 0;
-        virtual std::string ToString() = 0;
+        //virtual std::string ToString(){}
 };
 
 #endif

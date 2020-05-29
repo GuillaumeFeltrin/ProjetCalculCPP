@@ -29,10 +29,9 @@ SOURCES += \
     variable.cpp \
     mainwindow.cpp \
     window.cpp \
-    
-        SaveLoad.cpp
 
 HEADERS += \
+    SaveLoad.h \
     Expression.h \
     addition.h \
     constante.h \
@@ -45,7 +44,6 @@ HEADERS += \
     symboletable.h \
     variable.h \
     window.h \
-    SaveLoad.h
 
 FORMS += \
     window.ui

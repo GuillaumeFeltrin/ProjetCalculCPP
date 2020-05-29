@@ -22,26 +22,8 @@ int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
  
-
     // GROUPE 5
     MainWindow M;
-    
-    // GROUPE 3
-    std::string validation;
-    std::cout << "Voulez vous charger un fichier? y/n" << std::endl;
-    std::cin >> validation;
-    if ((validation == "y")||(validation == "Y")) {
-        std::string equation = GetFromFile("./save");
-        if(equation != "") {
-            //Chargement depuis la string vers les classes adaptees
-        }
-    }
-    else {
-        Multiplication result(new Addition(new Constante(2.1), new Constante(4)), new Constante(3));
-        std::cout << result.ToString() << " = " << result.calcul() << std::endl;
-        SaveToFile(result.ToString());
-        std::cout << "Equation sauvegardee !"  << std::endl;
-    }
 
     // GROUPE 2 & 1
     // Objet de la class Window qui hérite de QWidget
@@ -171,6 +153,23 @@ int main(int argc, char *argv[])
     Multiplication mult = Multiplication(&sous, &add);
 
     mult.simplifier()->affichageClassique();cout <<endl;
+
+    // GROUPE 3
+    /*std::string validation;
+    std::cout << "Voulez vous charger un fichier? y/n" << std::endl;
+    std::cin >> validation;
+    if ((validation == "y")||(validation == "Y")) {
+        std::string equation = GetFromFile("./save");
+        if(equation != "") {
+            //Chargement depuis la string vers les classes adaptees
+        }
+    }
+    else {
+        Multiplication result(new Addition(new Constante(2.1), new Constante(4)), new Constante(3));
+        std::cout << result.ToString() << " = " << result.calcul() << std::endl;
+        SaveToFile(result.ToString());
+        std::cout << "Equation sauvegardee !"  << std::endl;
+    }*/
 
     // exécution application
     return app.exec();

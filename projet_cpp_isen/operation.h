@@ -2,16 +2,18 @@
 #define OPERATION_H
 
 #include "Expression.h"
-
+#include <iostream>
 
 class Operation : public Expression
 {
-protected:
-    Expression* _terme1;
-    Expression* _terme2;
+    private:
 
-public:
-    Operation(Expression* a, Expression* b);
+    protected:
+        Expression * _terme1;
+        Expression * _terme2;
+
+    public:
+
 };
 
 #endif // OPERATION_H

@@ -11,22 +11,22 @@ class Variable : public Expression
         Variable(char c, float valeur);
         Variable(char c);
         float calcul();
-        void set_valeur(float c);
+        void setValeur(float c);
+        char getCsteV();
+        float getValeur();
         void affichageClassique();
         void affichagePolonaiseInversee();
         std::string affichageClassiqueStr();
         std::string affichagePolonaiseInverseeStr();
 
-        char _csteV;
-        float _valeur;
         Variable* next;
 
     protected:
 
     private:
+        char _csteV;
+        float _valeur;
 };
 
 #endif // VARIABLE_H
-
-
 

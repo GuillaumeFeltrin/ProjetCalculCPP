@@ -2,15 +2,15 @@
 
 Constante::Constante(float val)
 {
- _valeur = val;
+    _valeur = val;
 }
 
 void Constante::affichageClassique(){
-    cout << _valeur;
+    std::cout << _valeur;
 }
 
 void Constante::affichagePolonaiseInversee(){
-    cout << _valeur;
+    std::cout << _valeur;
 }
 
 

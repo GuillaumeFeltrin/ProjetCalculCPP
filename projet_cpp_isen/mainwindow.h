@@ -4,22 +4,17 @@
 #include <QMainWindow>
 #include <QLineEdit>
 #include "constante.h"
-#include "variable.h"
+#include "window.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
-
-
-
 QT_END_NAMESPACE
-
-
 
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    MainWindow(QWidget *parent = nullptr, float resultat = 0.0, InteractionUtilisateur * inter = nullptr);
     ~MainWindow();
 
 private slots:
@@ -29,17 +24,15 @@ private slots:
     void on_pushButton_clicked();
 
     void affichage_graphique();
-    void affichage_graphique(Expression *expression);
+
+    void affichage_graphique(Expression *exp);
 
 private:
     Ui::MainWindow *ui;
     QLineEdit *abscisseValue;
-    QLineEdit *expressionValue;
+    Expression *_exp;
+    InteractionUtilisateur * _inter;
     int abscisse;
-    int _minX;
-    int _maxX;
-    int _minY;
-    int _maxY;
-    QString expression;
+    float resultat_calcul;
 };
 #endif // MAINWINDOW_H

@@ -9,12 +9,12 @@ private:
     float _valeur;
 public:
     Constante(float val);
+    virtual ~Constante() {}
     float calcul();
     void affichageClassique();
     void affichagePolonaiseInversee();
     std::string affichageClassiqueStr();
     std::string affichagePolonaiseInverseeStr();
-
 };
 
 #endif // CONSTANTE_H

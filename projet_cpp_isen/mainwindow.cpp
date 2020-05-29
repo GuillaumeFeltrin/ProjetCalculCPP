@@ -5,59 +5,24 @@
 #include <QtCharts>
 #include <QtCharts/QLineSeries>
 #include <QtCharts/QChartView>
-#include <iostream>
+
 #include "addition.h"
 #include "multiplication.h"
-#include <list>
-#include <sstream>
 
 using namespace std;
 
-//Cette fonction permet de tracer une fonction affine
-QLineSeries * createAffineFunction(float pa, float pb){
-    QLineSeries *series = new QLineSeries();
-    Constante a(pa);
-    Constante b(pb);
-    for(int i = 0; i < 10; i++){
-        Constante x(i);
-        Multiplication multi(&a, &x);
-        Constante res_multi(multi.calcul());
-        Addition add(&res_multi, &b);
-        series->append(x.calcul(), add.calcul());
-        add.affichageClassique();
-        cout << endl;
-
-    }
-    return series;
-}
-
-//Cette fonction permet de tracer un polynome de 2nd degré
-QLineSeries * create2ndPolynomeFunction(float pa, float pb, float pc){
-    QLineSeries *series = new QLineSeries();
-    Constante a(pa);
-    Constante b(pb);
-    Constante c(pc);
-    for(int i = 0; i < 10; i++){
-        Constante x(i);
-        Multiplication x_sqrt(&x, &x);
-        Constante cst_x_sqrt(x_sqrt.calcul());
-        Addition a(&cst_x_sqrt, &b);
-        Constante cst_a(a.calcul());
-        Addition res(&cst_a, &c);
-        series->append(x.calcul(), res.calcul());
-
-    }
-    return series;
-}
 
 
-MainWindow::MainWindow(QWidget *parent)
+MainWindow::MainWindow(QWidget *parent, float resultat, InteractionUtilisateur * inter)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    ui->error_msg->hide();
+    //ui->parametres->setFont(QFont("Arial", 10));
+    resultat_calcul = resultat;
     abscisseValue = new QLineEdit();
+    _inter = inter;
+    _exp = inter->getExpression();
 
 }
 
@@ -72,139 +37,28 @@ void MainWindow::on_sliderAbscisses_valueChanged(int value)
 {
     //mouvement du slider et affichage de la valeur de l'échelle
     QString s = QString::number(value);
-    //ui->abscisseValue->setText(s);
+    ui->abscisseValue->setText(s);
 
 }
-
 
 
 void MainWindow::on_pushButton_clicked()
 {
     //récupération des variables
-    //abscisse = ui->abscisseValue->text().toInt();
-    _minX = ui->minXValue->text().toInt();
-    _minY = ui->minYValue->text().toInt();
-    _maxX = ui->maxXValue->text().toInt();
-    _maxY = ui->maxYValue->text().toInt();
-
-    cout << abscisse << endl;
-    expression = ui->expressionValue->text();
-
-    //Traitement de l'expression
-    string str_expression = expression.toUtf8().constData(); //Convertion du QString en string
-    str_expression.erase(std::remove_if(str_expression.begin(), str_expression.end(), ::isspace), str_expression.end());//suppression des ' '
-
-    int nbVariable=0;
-    for(int i=0;i<str_expression.size();i++)
-       if(isalpha(str_expression[i])) nbVariable++;
-
-
-    Variable *var = new Variable();
-    //Test avec une expression construite par code
-    Constante a(1);
-    Constante b(4);
-    Addition add(var,&b);
-    string addStr = add.affichageClassiqueStr();
-    cout << addStr << endl;
-    //après remplacer l'expression add par une expression recupérée via l'IHM
-
-
-    //Compte le nombre de variable dans l'expression créée dans le code.
-    int nbVariableExp=0;
-    for(int i=0;i<addStr.size();i++)
-       if(isalpha(addStr[i])) nbVariableExp++;
-
-
-    //verifie le formulaire
-    if(expression != NULL && _minX != NULL && _maxX != NULL && _minY != NULL && _maxY != NULL){
-
-
-           //cas où on a qu'une variable
-           if(nbVariableExp == 0){
-               affichage_graphique(&add);
-               ui->error_msg->hide();
-           }
-           //cas avec une variable
-           else if(nbVariableExp == 1){
-
-               QLineSeries * series  = new QLineSeries();
-               for(int i=_minX; i<_maxX; i++){
-                   var->set_valeur(i);
-                   series->append(i, add.calcul());
-               }
-               QValueAxis *axisX = new QValueAxis();
-               QValueAxis *axisY = new QValueAxis();
-               QChart *chart = new QChart();
-               axisX->setRange(_minX, _maxX);
-               axisY->setRange(_minY, _maxY);
-               chart->update();
-               chart->addSeries(series);
-               chart->setTitle(QString::fromStdString(add.affichageClassiqueStr()));
-
-               QChartView *chartView = new QChartView(chart);
-               chartView->chart()->setAxisX(axisX, series);
-               chartView->chart()->setAxisY(axisY, series);
-               chartView->setRenderHint(QPainter::Antialiasing);
-               chartView->setParent(ui->verticalFrame_2);
-               chartView->show();
-           }
-
-
-    }else{
-        ui->error_msg->show();
-    }
+    abscisse = ui->abscisseValue->text().toInt();
+    affichage_graphique(_exp);
 
 }
-
-
-
-//affiche l'expression passée en paramètre
-void MainWindow::affichage_graphique(Expression *exp){
-
-    QLineSeries *series = new QLineSeries();
-    QValueAxis *axisX = new QValueAxis();
-    QValueAxis *axisY = new QValueAxis();
-
-    string addStr = exp->affichageClassiqueStr();
-
-
-    for (int i=_minX; i<(_maxX)+1 ; i++)
-    {
-        series->append(i, exp->calcul());
-    }
-
-    QChart *chart = new QChart();
-    axisX->setRange(_minX, _maxX);
-    axisY->setRange(_minY, _maxY);
-    chart->update();
-    chart->addSeries(series);
-    chart->setTitle(expression);
-
-    QChartView *chartView = new QChartView(chart);
-    chartView->chart()->setAxisX(axisX, series);
-    chartView->chart()->setAxisY(axisY, series);
-    chartView->setRenderHint(QPainter::Antialiasing);
-    chartView->setParent(ui->verticalFrame_2);
-    chartView->show();
-
-}
-
 
 void MainWindow::affichage_graphique()
 {
-     QLineSeries *series = new QLineSeries();
+    QLineSeries *series = new QLineSeries();
      Constante terme1(-3);
      Constante terme2(0);
 
-
      //création des séries avec notre expression (terme1*x+terme2), en attendant le code du groupe 2
-     QValueAxis *axisX = new QValueAxis();
-     QValueAxis *axisY = new QValueAxis();
-
-     for (int i=_minX; i<(_maxX)+1 ; i++)
+     for (int i=-(abscisse); i<(abscisse)+1 ; i++)
      {
-
-
       Constante x(i);
       Multiplication multiplication(&terme1,&x);
       Constante resultat(multiplication.calcul());
@@ -212,20 +66,67 @@ void MainWindow::affichage_graphique()
       series->append(i, add.calcul());
       }
 
+
+     //affichage des séries
      QChart *chart = new QChart();
      chart->update();
      chart->addSeries(series);
-     axisX->setRange(_minX, _maxX);
-     axisY->setRange(_minY, _maxY);
-
-
-     chart->setTitle(expression);
+     chart->createDefaultAxes();
+     chart->setTitle("line chart example");
 
 
     QChartView *chartView = new QChartView(chart);
-    chartView->chart()->setAxisX(axisX, series);
-    chartView->chart()->setAxisY(axisY, series);
     chartView->setRenderHint(QPainter::Antialiasing);
     chartView->setParent(ui->verticalFrame_2);
     chartView->show();
+}
+
+//affiche l'expression passée en paramètre
+void MainWindow::affichage_graphique(Expression *exp){
+
+    QLineSeries *series = new QLineSeries();
+
+
+    string expStr = exp->affichageClassiqueStr();
+
+    //Compte le nombre de variable dans l'expression créée dans le code.
+    int nbVariableExp=0;
+    for(int i=0;i<expStr.size();i++)
+       if(isalpha(expStr[i])) nbVariableExp++;
+
+    if(nbVariableExp == 0){
+        for (int i=-(abscisse); i<(abscisse)+1 ; i++)
+        {
+            series->append(i, exp->calcul());
+        }
+    }else if(nbVariableExp == 1){
+        Variable *var = new Variable();
+        Symboletable *tab = _inter->getSymboleTable();
+        tab->find('x');
+        for (int i=-(abscisse); i<(abscisse)+1 ; i++)
+        {
+            var->setValeur(i);
+            cout << "[" << var->calcul()<<","<< exp->calcul()*var->calcul() << "]" <<endl;
+            series->append(var->calcul(),exp->calcul());
+        }
+
+    }
+
+
+
+    //affichage des séries
+    QChart *chart = new QChart();
+    chart->update();
+    chart->addSeries(series);
+    chart->createDefaultAxes();
+    chart->setTitle(QString::fromStdString(expStr));
+
+
+   QChartView *chartView = new QChartView(chart);
+   chartView->setRenderHint(QPainter::Antialiasing);
+   chartView->setParent(ui->verticalFrame_2);
+   chartView->show();
+
+
+
 }

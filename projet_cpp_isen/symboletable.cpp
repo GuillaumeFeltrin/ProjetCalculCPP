@@ -1,4 +1,3 @@
-#include "Expression.h"
 #include "symboletable.h"
 #include <iostream>
 
@@ -24,8 +23,6 @@ bool Symboletable::insert(char id, float value)
 
     if (list[index] == NULL) {
         list[index] = p;
-        cout << "\n" << id << " inserted";
-
         return true;
     }
 
@@ -35,8 +32,7 @@ bool Symboletable::insert(char id, float value)
             start = start->next;
 
         start->next = p;
-        cout << "\n"
-             << id << " inserted";
+
 
         return true;
     }
@@ -54,8 +50,8 @@ bool Symboletable::modify(char id, float expectedValue)
         return "-1";
 
     while (start != NULL) {
-        if (start->_csteV == id) {
-            start->_valeur = expectedValue;
+        if (start->getCsteV() == id) {
+            start->setValeur(expectedValue);
             return true;
         }
         start = start->next;
@@ -76,17 +72,17 @@ bool Symboletable::deleteRecord(char id)
         return false;
     }
     // only one _csteV is present
-    if (tmp->_csteV == id && tmp->next == NULL) {
+    if (tmp->getCsteV() == id && tmp->next == NULL) {
         tmp->next = NULL;
         delete tmp;
         return true;
     }
 
-    while (tmp->_csteV != id && tmp->next != NULL) {
+    while (tmp->getCsteV() != id && tmp->next != NULL) {
         par = tmp;
         tmp = tmp->next;
     }
-    if (tmp->_csteV == id && tmp->next != NULL) {
+    if (tmp->getCsteV() == id && tmp->next != NULL) {
         par->next = tmp->next;
         tmp->next = NULL;
         delete tmp;
@@ -114,7 +110,7 @@ char Symboletable::find(char id)
 
     while (start != NULL) {
 
-        if (start->_csteV == id) {
+        if (start->getCsteV() == id) {
             cout << "Found " << id;
             return true;
         }

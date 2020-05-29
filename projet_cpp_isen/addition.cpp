@@ -1,24 +1,28 @@
 #include "addition.h"
 
-Addition::Addition(Expression *_terme1, Expression *_terme2) :
-    Operation(_terme1, _terme2)  {}
+Addition::Addition(Expression * terme1, Expression * terme2) {
+    _terme1 = terme1;
+    _terme2 = terme2;
+}
 
-float Addition :: calcul() {
-  return _terme1->calcul() + _terme2->calcul();
- }
+float Addition::calcul() {
+    return (float)((float) _terme1->calcul() + (float) _terme2->calcul());
+}
 
-void Addition :: affichageClassique(){
-    std::cout << "(";
+void Addition::affichageClassique() {
+    std::cout << " ( ";
     _terme1->affichageClassique();
     std::cout << " + ";
     _terme2->affichageClassique();
-    std::cout << ")";}
+    std::cout << " ) ";;
+}
 
-void Addition :: affichagePolonaiseInversee(){
+void Addition::affichagePolonaiseInversee() {
     _terme1->affichagePolonaiseInversee();
-    cout << " ";
+    std::cout << " ";
     _terme2->affichagePolonaiseInversee();
-    cout<<" + ";}
+    std::cout << " + ";
+}
 
 std::string Addition::affichageClassiqueStr() {
     return " ( " + _terme1->affichageClassiqueStr()
@@ -29,4 +33,5 @@ std::string Addition::affichagePolonaiseInverseeStr() {
     return _terme1->affichagePolonaiseInverseeStr()
            + " " + _terme2->affichagePolonaiseInverseeStr() + " + ";
 }
+
 

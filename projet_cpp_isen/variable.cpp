@@ -1,4 +1,3 @@
-#include "Expression.h"
 #include "variable.h"
 #include <iostream>
 
@@ -8,21 +7,21 @@ Variable::Variable()
 {
     _csteV = 'c';
     _valeur = 1;
-     next = NULL;
+    next = NULL;
 }
 
 Variable::Variable(char c)
 {
     _csteV = c;
     _valeur = 1;
-     next = NULL;
+    next = NULL;
 }
 
 Variable::Variable(char c, float nb)
 {
     _csteV = c;
-    _valeur = nb;
-     next = NULL;
+    this->setValeur(nb);
+    next = NULL;
 }
 
 Variable::~Variable()
@@ -35,9 +34,17 @@ float Variable::calcul()
     return _valeur;
 }
 
-void Variable::set_valeur(float c)
+void Variable::setValeur(float c)
 {
     _valeur = c;
+}
+
+char Variable::getCsteV() {
+    return _csteV;
+}
+
+float Variable::getValeur(){
+    return _valeur;
 }
 
 void Variable::affichageClassique()
@@ -50,14 +57,13 @@ void Variable::affichagePolonaiseInversee()
     cout << _csteV ;
 }
 
+
 std::string Variable::affichageClassiqueStr() {
-    std::string str ="";
-    str+=_csteV;
+    std::string str = std::string(&_csteV);
     return str;
 }
 
 std::string Variable::affichagePolonaiseInverseeStr() {
-    std::string str ="";
-    str+=_csteV;
+    std::string str = std::string(&_csteV);
     return str;
 }

@@ -1,49 +1,25 @@
 #include "interactionutilisateur.h"
 
-#include "constante.h"
-#include "addition.h"
-#include "soustraction.h"
-#include "division.h"
-#include "multiplication.h"
-#include "operation.h"
-#include<string.h>
-#include<stdio.h>
-#include <typeinfo>
-#include <iostream>
-#include <algorithm>
 using namespace std;
 
-InteractionUtilisateur::InteractionUtilisateur()
+InteractionUtilisateur::InteractionUtilisateur(QList<QString> *listStr)
 {
-    initialiseInteraction();
+    _table = new Symboletable();
+    initialiseInteraction(listStr);
 }
 
-InteractionUtilisateur::InteractionUtilisateur(string str)
-{
-    initialiseInteraction(str);
+InteractionUtilisateur::InteractionUtilisateur(QList<QString> *listStr, Symboletable* table){
+    _table = table;
+    initialiseInteraction(listStr);
+}
+
+void InteractionUtilisateur::initialiseInteraction(QList<QString> *listStr){
+    for(int i(0); i < listStr->size() - 1; i++) {
+        analyseElement(listStr->at(i).toStdString());
+    }
 }
 
 
-void InteractionUtilisateur::initialiseInteraction(){
-    cout << "S'il vous plait, entrez votre Expression terme a terme et terminez par 'p' " << endl;
-    string _str = " 5 5 +";
-     /*do{
-        cin >> _str;
-        analyseElement(_str);
-    }while(_str.compare("p"));*/
-    analyseElement(_str);
-
-}
-
-void InteractionUtilisateur::initialiseInteraction(string _str){
-
-    do{
-        analyseElement(_str);
-    }while(_str.compare("p"));
-
-
-
-}
 void InteractionUtilisateur::analyseElement(string str){
     if(isdigit(str[0]) || isdigit(str[1])){
         Constante* e = new Constante(stof(str));
@@ -57,6 +33,8 @@ void InteractionUtilisateur::analyseElement(string str){
         gestionMultiplication();
     else if(str == _div)
         gestionDivision();
+    else if(isalpha(str[0]))
+        gestionVariable(str[0]);
 }
 
 void InteractionUtilisateur::gestionSomme(){
@@ -114,3 +92,26 @@ void InteractionUtilisateur::gestionMultiplication(){
     _pile.push(to_string(m->calcul()));
     _pileExpression.push(m);
 }
+
+void InteractionUtilisateur::gestionVariable(char str){
+    //Recherche de la variable dans la table des symboles
+    if(_table->find(str) == -1){ //Variable non trouvé
+        //Creation d'une nouvelle variable et insertion dans le tableau
+        Variable* var = new Variable(str);
+
+        _table->insert(var->getCsteV(), var->getValeur());
+        _pileExpression.push(var);
+    }else{
+        //recherche de la variable dans la table
+        int index = _table->hashf(str);
+        Variable* start = _table->list[index];
+        while (start != NULL) {
+            if (start->getCsteV() == str) {
+                _pileExpression.push(start);
+            }
+
+            start = start->next;
+        }
+    }
+}
+

@@ -11,12 +11,25 @@
 
 using namespace std;
 
+/**
+  En créant un objet InteractionUtilisateur, on ouvre le dialogue avec l'utilsateur
+    qui doit rentrer son expression en terminant par '*p'.
+    A la fin de la connection, l'expression est stockée et est accessible par getExpression.
+ * @brief InteractionUtilisateur::InteractionUtilisateur
+ */
 InteractionUtilisateur::InteractionUtilisateur()
 {
     _table = new Symboletable();
     initialiseInteraction();
 }
 
+/**
+  En créant un objet InteractionUtilisateur, on ouvre le dialogue avec l'utilsateur
+    qui doit rentrer son expression en terminant par '*p'.
+    A la fin de la connection, l'expression est stockée et est accessible par getExpression.
+ * @brief InteractionUtilisateur::InteractionUtilisateur
+ * @param table : une table de symbole si elle existe.
+ */
 InteractionUtilisateur::InteractionUtilisateur(Symboletable* table){
     _table = table;
     initialiseInteraction();
@@ -36,7 +49,6 @@ void InteractionUtilisateur::initialiseInteraction(){
 void InteractionUtilisateur::analyseElement(string str){
     if(isdigit(str[0]) || isdigit(str[1])){
         Constante* e = new Constante(stof(str));
-//        _pile.push(str);
         _pileExpression.push(e);
     }else if(str == _sum){
         gestionSomme();
@@ -60,7 +72,6 @@ void InteractionUtilisateur::gestionSomme(){
 
     //creation Operation
     Addition *a = new Addition(expression1, expression2);
-    _pile.push(to_string(a->calcul()));
     _pileExpression.push(a);
 }
 
@@ -74,7 +85,6 @@ void InteractionUtilisateur::gestionDivision(){
 
     //creation Operation
     Division* d = new Division(expression1,expression2);
-    _pile.push(to_string(d->calcul()));
     _pileExpression.push(d);
 }
 
@@ -88,7 +98,6 @@ void InteractionUtilisateur::gestionSoustraction(){
 
     //creation Operation
     Soustraction* s = new Soustraction(expression1,expression2);
-    _pile.push(to_string(s->calcul()));
     _pileExpression.push(s);
 }
 
@@ -102,7 +111,6 @@ void InteractionUtilisateur::gestionMultiplication(){
 
     //creation Operation
     Multiplication* m = new Multiplication(expression1,expression2);
-    _pile.push(to_string(m->calcul()));
     _pileExpression.push(m);
 }
 

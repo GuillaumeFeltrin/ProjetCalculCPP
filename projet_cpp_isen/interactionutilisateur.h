@@ -29,7 +29,6 @@ private:
     void gestionDivision();
     void gestionVariable(char str);
 
-    stack<string> _pile;
     stack<Expression*> _pileExpression;
     Symboletable* _table;
 

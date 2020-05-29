@@ -1,13 +1,12 @@
 #include "soustraction.h"
+#include "constante.h"
 #include "iostream"
 using namespace std;
-#include "constante.h"
-
 
 Soustraction::Soustraction(Expression * terme1, Expression * terme2) {
     _terme1 = terme1;
     _terme2 = terme2;
-    //_symbol = "-";
+    _symbol = "-";
 }
 
 float Soustraction::calcul() {

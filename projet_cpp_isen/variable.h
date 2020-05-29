@@ -20,7 +20,7 @@ class Variable : public Expression
         std::string affichagePolonaiseInverseeStr();
         Expression* simplifier();
         bool isConstante();
-        //string ToString();
+        std::string ToString();
 
         Variable* next;
 
@@ -29,6 +29,7 @@ class Variable : public Expression
     private:
         char _csteV;
         float _valeur;
+        std::string _symbol;
 };
 
 #endif // VARIABLE_H

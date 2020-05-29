@@ -10,6 +10,7 @@ class Constante : public Expression
 {
 private:
     float _valeur;
+    std::string _symbol;
 public:
     Constante(float val);
     virtual ~Constante() {}

@@ -76,3 +76,14 @@ Expression* Variable::simplifier(){
 bool Variable::isConstante(){
     return false;
 }
+
+std::string Variable::ToString() {
+    string par1 = "(";
+    string par2 = ")";
+    string x;
+    x += getCsteV();
+    string y = std::to_string(getValeur());
+    string msg = par1 + x + _symbol + y + par2;
+    return msg;
+    //return("( " + this->getCsteV() + " " + _symbol + " " + this->getValeur() + " )");
+}

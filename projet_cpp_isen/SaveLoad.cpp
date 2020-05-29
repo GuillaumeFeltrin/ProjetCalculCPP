@@ -11,7 +11,7 @@
 #include "division.h"
 #include "multiplication.h"
 
-
+//Save and load
 std::string GetFromFile(std::string filepath) {
     std::string equation;
     std::ifstream fileStream;

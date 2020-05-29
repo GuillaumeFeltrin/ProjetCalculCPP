@@ -8,12 +8,12 @@
 
 #include "addition.h"
 #include "multiplication.h"
-
+#include "interactionutilisateur.h"
 using namespace std;
 
 
 
-MainWindow::MainWindow(QWidget *parent, float resultat, InteractionUtilisateur * inter)
+MainWindow::MainWindow(QWidget *parent, float resultat, Window * window)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
@@ -21,8 +21,9 @@ MainWindow::MainWindow(QWidget *parent, float resultat, InteractionUtilisateur *
     //ui->parametres->setFont(QFont("Arial", 10));
     resultat_calcul = resultat;
     abscisseValue = new QLineEdit();
-    _inter = inter;
-    _exp = inter->getExpression();
+    _window = window;
+    _inter = window->getInteractionUtilisateur();
+    _exp = window->getInteractionUtilisateur()->getExpression();
 
 }
 
@@ -32,7 +33,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
 void MainWindow::on_sliderAbscisses_valueChanged(int value)
 {
     //mouvement du slider et affichage de la valeur de l'échelle
@@ -40,7 +40,6 @@ void MainWindow::on_sliderAbscisses_valueChanged(int value)
     ui->abscisseValue->setText(s);
 
 }
-
 
 void MainWindow::on_pushButton_clicked()
 {
@@ -64,8 +63,7 @@ void MainWindow::affichage_graphique()
       Constante resultat(multiplication.calcul());
       Addition add(&resultat, &terme2);
       series->append(i, add.calcul());
-      }
-
+     }
 
      //affichage des séries
      QChart *chart = new QChart();
@@ -85,33 +83,39 @@ void MainWindow::affichage_graphique()
 void MainWindow::affichage_graphique(Expression *exp){
 
     QLineSeries *series = new QLineSeries();
-
-
     string expStr = exp->affichageClassiqueStr();
+    QString qstr = QString::fromStdString(expStr);
 
     //Compte le nombre de variable dans l'expression créée dans le code.
     int nbVariableExp=0;
+    char c;
     for(int i=0;i<expStr.size();i++)
-       if(isalpha(expStr[i])) nbVariableExp++;
-
+       if(isalpha(expStr[i])){
+           c = expStr[i];
+           nbVariableExp++;
+        }
+    //si il n'y a pas de variable
     if(nbVariableExp == 0){
         for (int i=-(abscisse); i<(abscisse)+1 ; i++)
         {
             series->append(i, exp->calcul());
         }
+
+    //si il y a une variable
     }else if(nbVariableExp == 1){
-        Variable *var = new Variable();
         Symboletable *tab = _inter->getSymboleTable();
-        tab->find('x');
+        QList<QString> elements = _window->getElements();
         for (int i=-(abscisse); i<(abscisse)+1 ; i++)
         {
-            var->setValeur(i);
-            cout << "[" << var->calcul()<<","<< exp->calcul()*var->calcul() << "]" <<endl;
-            series->append(var->calcul(),exp->calcul());
+            cout << c << endl;
+            tab->modify(c, i);// on modifie la table
+            _inter = new InteractionUtilisateur(&elements, tab);
+            exp = _inter->getExpression();
+            cout << exp->calcul() << endl;
+            series->append(i,exp->calcul());
         }
 
     }
-
 
 
     //affichage des séries
@@ -122,10 +126,10 @@ void MainWindow::affichage_graphique(Expression *exp){
     chart->setTitle(QString::fromStdString(expStr));
 
 
-   QChartView *chartView = new QChartView(chart);
-   chartView->setRenderHint(QPainter::Antialiasing);
-   chartView->setParent(ui->verticalFrame_2);
-   chartView->show();
+    QChartView *chartView = new QChartView(chart);
+    chartView->setRenderHint(QPainter::Antialiasing);
+    chartView->setParent(ui->verticalFrame_2);
+    chartView->show();
 
 
 

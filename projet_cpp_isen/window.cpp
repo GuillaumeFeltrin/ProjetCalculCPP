@@ -140,7 +140,7 @@ void Window::valider() {
 
         QWidget *parent = new QWidget();
 
-        MainWindow *w = new MainWindow(parent, resultat_graph, _interactionUtilisateur);
+        MainWindow *w = new MainWindow(parent, resultat_graph, this);
         w->show();
     }
 }

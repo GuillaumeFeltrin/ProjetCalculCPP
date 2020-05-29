@@ -14,7 +14,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr, float resultat = 0.0, InteractionUtilisateur * inter = nullptr);
+    MainWindow(QWidget *parent = nullptr, float resultat = 0.0, Window * window = nullptr);
     ~MainWindow();
 
 private slots:
@@ -31,7 +31,8 @@ private:
     Ui::MainWindow *ui;
     QLineEdit *abscisseValue;
     Expression *_exp;
-    InteractionUtilisateur * _inter;
+    InteractionUtilisateur *_inter;
+    Window * _window;
     int abscisse;
     float resultat_calcul;
 };

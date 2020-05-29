@@ -8,7 +8,7 @@ class Symboletable : public Variable
 {
     public:
         Symboletable();
-        virtual ~Symboletable();
+        virtual ~Symboletable(); 
 
         int hashf(char id); // hash function
         bool insert(char id, float value);

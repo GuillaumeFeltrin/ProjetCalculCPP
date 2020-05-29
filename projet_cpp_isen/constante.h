@@ -20,7 +20,7 @@ public:
     void affichagePolonaiseInversee();
     std::string affichageClassiqueStr();
     std::string affichagePolonaiseInverseeStr();
-        std::string ToString();
+    std::string ToString();
 };
 
 #endif // CONSTANTE_H

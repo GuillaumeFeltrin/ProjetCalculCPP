@@ -5,13 +5,10 @@
 #include "iostream"
 using namespace std;
 
-Addition::Addition(Expression *_terme1, Expression *_terme2) :
-    Operation(_terme1, _terme2)  {
-        _symbol = "+";
-    }
 Addition::Addition(Expression * terme1, Expression * terme2) {
     _terme1 = terme1;
     _terme2 = terme2;
+    _symbol = "+";
 }
 
 float Addition::calcul() {

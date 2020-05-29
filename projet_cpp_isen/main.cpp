@@ -172,9 +172,6 @@ int main(int argc, char *argv[])
 
     mult.simplifier()->affichageClassique();cout <<endl;
 
-
-
-
     // exécution application
     return app.exec();
 }

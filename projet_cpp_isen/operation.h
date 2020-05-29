@@ -13,6 +13,7 @@ class Operation : public Expression
     protected:
         Expression * _terme1;
         Expression * _terme2;
+        string _symbol;
 
     public:
 

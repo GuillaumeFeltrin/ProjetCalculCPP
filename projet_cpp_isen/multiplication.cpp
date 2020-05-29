@@ -6,6 +6,7 @@ using namespace std;
 Multiplication::Multiplication(Expression * terme1, Expression * terme2) {
     _terme1 = terme1;
     _terme2 = terme2;
+    _symbol = "*";
 }
 
 float Multiplication::calcul() {

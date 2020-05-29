@@ -1,7 +1,9 @@
 #ifndef EXPRESSION_H
 #define EXPRESSION_H
 
-#include "iostream"
+#include <iostream>
+#include <string>
+
 using namespace std;
 
 
@@ -20,6 +22,7 @@ class Expression
         virtual std::string affichagePolonaiseInverseeStr() { return ""; }
         virtual Expression* simplifier() = 0;
         virtual bool isConstante() = 0;
+        virtual std::string ToString() = 0;
 };
 
-#endif // EXPRESSION_H
+#endif

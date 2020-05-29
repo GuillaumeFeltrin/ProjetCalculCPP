@@ -1,7 +1,10 @@
 #ifndef ADDITION_H
 #define ADDITION_H
 
+#include <string>
+
 #include "operation.h"
+#include "Expression.h"
 
 
 class Addition : public Operation
@@ -16,6 +19,7 @@ public:
     void affichagePolonaiseInversee();
     std::string affichageClassiqueStr();
     std::string affichagePolonaiseInverseeStr();
+        Addition(Expression *_terme1, Expression *_terme2);
 
 };
 

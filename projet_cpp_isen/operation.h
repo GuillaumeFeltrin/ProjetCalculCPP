@@ -1,6 +1,8 @@
 #ifndef OPERATION_H
 #define OPERATION_H
 
+#include <string>
+
 #include "Expression.h"
 #include <iostream>
 
@@ -14,6 +16,7 @@ class Operation : public Expression
 
     public:
 
+        std::string ToString();
 };
 
 #endif // OPERATION_H

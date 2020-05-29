@@ -1,5 +1,8 @@
 #ifndef CONSTANTE_H
 #define CONSTANTE_H
+
+#include <string>
+
 #include "Expression.h"
 
 
@@ -17,6 +20,7 @@ public:
     void affichagePolonaiseInversee();
     std::string affichageClassiqueStr();
     std::string affichagePolonaiseInverseeStr();
+        std::string ToString();
 };
 
 #endif // CONSTANTE_H

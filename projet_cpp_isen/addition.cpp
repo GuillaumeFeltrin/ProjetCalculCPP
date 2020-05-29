@@ -1,8 +1,14 @@
+#include <string>
+
 #include "addition.h"
 #include "constante.h"
 #include "iostream"
 using namespace std;
 
+Addition::Addition(Expression *_terme1, Expression *_terme2) :
+    Operation(_terme1, _terme2)  {
+        _symbol = "+";
+    }
 Addition::Addition(Expression * terme1, Expression * terme2) {
     _terme1 = terme1;
     _terme2 = terme2;
@@ -48,19 +54,8 @@ void Addition::affichageClassique() {
     std::cout << " ) ";;
 }
 
-void Addition::affichagePolonaiseInversee() {
+void Addition :: affichagePolonaiseInversee(){
     _terme1->affichagePolonaiseInversee();
-    std::cout << " ";
+    cout << " ";
     _terme2->affichagePolonaiseInversee();
-    std::cout << " + ";
-}
-
-std::string Addition::affichageClassiqueStr() {
-    return " ( " + _terme1->affichageClassiqueStr()
-            + " + " + _terme2->affichageClassiqueStr() + " ) ";
-}
-
-std::string Addition::affichagePolonaiseInverseeStr() {
-    return _terme1->affichagePolonaiseInverseeStr()
-           + " " + _terme2->affichagePolonaiseInverseeStr() + " + ";
-}
+    cout<<" + ";}

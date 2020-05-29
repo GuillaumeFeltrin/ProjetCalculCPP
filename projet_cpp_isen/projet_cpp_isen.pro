@@ -26,8 +26,9 @@ SOURCES += \
     symboletable.cpp \
     variable.cpp \
     mainwindow.cpp \
-    window.cpp
+    window.cpp \
     
+        SaveLoad.cpp
 
 HEADERS += \
     Expression.h \
@@ -41,7 +42,8 @@ HEADERS += \
     soustraction.h \
     symboletable.h \
     variable.h \
-    window.h
+    window.h \
+    SaveLoad.h
 
 FORMS += \
     window.ui

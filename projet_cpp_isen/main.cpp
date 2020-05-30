@@ -177,5 +177,5 @@ int main(int argc, char *argv[])
     }
 
     // exécution application
-    return a.exec();
+    return app.exec();
 }

@@ -29,10 +29,13 @@ SOURCES += \
     variable.cpp \
     mainwindow.cpp \
     window.cpp \
+    IHM3D.cpp \
+    surfacegraph.cpp
 
 HEADERS += \
     SaveLoad.h \
     Expression.h \
+    IHM3D.h \
     addition.h \
     constante.h \
     division.h \
@@ -44,6 +47,7 @@ HEADERS += \
     symboletable.h \
     variable.h \
     window.h \
+    surfacegraph.h
 
 FORMS += \
     window.ui
@@ -53,3 +57,24 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+QT += widgets
+requires(qtConfig(combobox))
+
+RESOURCES += surface.qrc \
+    surface.qrc
+
+OTHER_FILES += doc/src/* \
+               doc/images/*
+ INCLUDEPATH += ../../../include
+
+ LIBS += -L$$OUT_PWD/../../../lib
+TEMPLATE = app
+
+ QT += datavisualization
+ contains(TARGET, qml.*) {
+ QT += qml quick
+  }
+
+ target.path = $$[QT_INSTALL_EXAMPLES]/datavisualization/$$TARGET
+ INSTALLS += target

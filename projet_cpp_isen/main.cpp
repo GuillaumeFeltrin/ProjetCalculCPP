@@ -9,6 +9,7 @@
 #include "soustraction.h"
 #include "multiplication.h"
 #include "division.h"
+#include "IHM3D.h"
 #include "variable.h"
 #include "symboletable.h"
 #include "iostream"
@@ -20,6 +21,10 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
+    // GROUPE 10
+    IHM3D(argc,argv);
+
+    // creation application
     QApplication app(argc, argv);
  
     // GROUPE 5
@@ -172,5 +177,5 @@ int main(int argc, char *argv[])
     }
 
     // exécution application
-    return app.exec();
+    return a.exec();
 }

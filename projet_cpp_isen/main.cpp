@@ -21,9 +21,6 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-    // GROUPE 10
-    IHM3D(argc,argv);
-
     // creation application
     QApplication app(argc, argv);
  
@@ -175,6 +172,9 @@ int main(int argc, char *argv[])
         SaveToFile(result.ToString());
         //std::cout << "Equation sauvegardee !"  << std::endl;
     }
+
+    // GROUPE 10
+    IHM3D(argc,argv);
 
     // exécution application
     return app.exec();

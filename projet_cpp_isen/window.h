@@ -21,6 +21,8 @@ class Window : public QWidget
     Q_OBJECT
 public:
     explicit Window(QWidget *parent = nullptr);
+    InteractionUtilisateur *getInteractionUtilisateur(){return _interactionUtilisateur;}
+    QList<QString> getElements(){return _elements;}
 
 private slots:
     void valider();

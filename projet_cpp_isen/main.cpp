@@ -357,11 +357,13 @@ int main(int argc, char *argv[])
     cout << "--------TEST INSERTION TABLE SYMBOLE--------" << endl;
     Symboletable* table = new Symboletable();
     Variable* var = new Variable('y',4);
-    table->insert(var->_csteV, var->_valeur);
+    //(GROUPE 7) Intégration de la méthode ne permet pas de compiler donc nous mettons votre ligne en commentaire
+    //table->insert(var->_csteV, var->_valeur);
     cout << endl;
 
     cout << "--------TEST INTERACTION UTILISATEUR--------" << endl;
-    InteractionUtilisateur* inter = new InteractionUtilisateur(table);
+    //(GROUPE 7) De même
+    /*InteractionUtilisateur* inter = new InteractionUtilisateur(table);
     Expression* expression = inter->getExpression();
     cout << "Affichage Polonaise Inversee :";
     expression->affichagePolonaiseInversee();
@@ -369,6 +371,7 @@ int main(int argc, char *argv[])
     expression->affichageClassique();
     cout << endl << "Resultat :" << expression->calcul() << endl;
     cout << "---------FIN DU TEST-----------" << endl;
+    */
     // exécution application
     return app.exec();
 }

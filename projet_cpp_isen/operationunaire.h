@@ -12,6 +12,9 @@ protected:
 
 public:
     OperationUnaire(Expression* a);
+    std::string ToString();
+    bool isConstante();
+    Expression* simplifier();
 };
 
 #endif // OPERATIONSUNAIRES_H

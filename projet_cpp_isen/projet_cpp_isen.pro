@@ -4,8 +4,6 @@ QT += gui charts
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 CONFIG += c++11
 
-CONFIG += c++11
-
 # The following define makes your compiler emit warnings if you use
 # any Qt feature that has been marked deprecated (the exact warnings
 # depend on your compiler). Please consult the documentation of the
@@ -28,19 +26,20 @@ SOURCES += \
     mainwindow.cpp \
     multiplication.cpp \
     operation.cpp \
+    operationunaire.cpp \
     soustraction.cpp \
     symboletable.cpp \
     variable.cpp \
     window.cpp \
     IHM3D.cpp \
     surfacegraph.cpp \
-        carre.cpp \
-        inverse.cpp \
-        logneperien.cpp \
-        oppose.cpp \
-        puissance.cpp \
-        racinecarre.cpp \
-        valeurabsolue.cpp
+    carre.cpp \
+    inverse.cpp \
+    logneperien.cpp \
+    oppose.cpp \
+    puissance.cpp \
+    racinecarre.cpp \
+    valeurabsolue.cpp
 
 HEADERS += \
     SaveLoad.h \
@@ -57,10 +56,11 @@ HEADERS += \
     mainwindow.h \
     multiplication.h \
     operation.h \
+    operationunaire.h \
     oppose.h \
     puissance.h \
     racinecarre.h \
-    valeurabsolue.h
+    valeurabsolue.h \
     soustraction.h \
     symboletable.h \
     variable.h \

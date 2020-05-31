@@ -123,8 +123,8 @@ void InteractionUtilisateur::gestionMultiplication(){
 void InteractionUtilisateur::gestionPuissance(){
 
     //Depile
-    _pileExpression.pop();
     Expression* expression2 = _pileExpression.top();
+    _pileExpression.pop();
     Expression* expression1 = _pileExpression.top();
     _pileExpression.pop();
 
@@ -136,18 +136,18 @@ void InteractionUtilisateur::gestionPuissance(){
 void InteractionUtilisateur::gestionAbsolue(){
 
     //Depile
-    Expression* expression2 = _pileExpression.top();
+    Expression* expression1 = _pileExpression.top();
     _pileExpression.pop();
 
-    ValeurAbsolue* abs = new ValeurAbsolue(expression1);
     //creation Operation
+    ValeurAbsolue* abs = new ValeurAbsolue(expression1);
     _pileExpression.push(abs);
 }
 
 void InteractionUtilisateur::gestionInverse(){
 
-    Expression* expression2 = _pileExpression.top();
     //Depile
+    Expression* expression1 = _pileExpression.top();
     _pileExpression.pop();
 
     //creation Operation
@@ -156,31 +156,31 @@ void InteractionUtilisateur::gestionInverse(){
 }
 
 void InteractionUtilisateur::gestionRacine(){
-    //Depile
 
-    Expression* expression2 = _pileExpression.top();
+    //Depile
+    Expression* expression1 = _pileExpression.top();
     _pileExpression.pop();
 
     //creation Operation
     RacineCarre* r = new RacineCarre(expression1);
-}
     _pileExpression.push(r);
+}
 
 void InteractionUtilisateur::gestionOppose(){
 
-    Expression* expression2 = _pileExpression.top();
     //Depile
+    Expression* expression1 = _pileExpression.top();
     _pileExpression.pop();
-    //creation Operation
 
+    //creation Operation
     Oppose* o = new Oppose(expression1);
-}
     _pileExpression.push(o);
+}
 
 void InteractionUtilisateur::gestionLog(){
 
     //Depile
-    Expression* expression2 = _pileExpression.top();
+    Expression* expression1 = _pileExpression.top();
     _pileExpression.pop();
 
     //creation Operation
@@ -204,7 +204,6 @@ void InteractionUtilisateur::gestionVariable(char str){
             if (start->getCsteV() == str) {
                 _pileExpression.push(start);
             }
-
             start = start->next;
         }
     }

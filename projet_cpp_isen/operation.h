@@ -1,17 +1,23 @@
 #ifndef OPERATION_H
 #define OPERATION_H
 
-#include "Expression.h"
+#include <string>
 
+#include "Expression.h"
+#include <iostream>
 
 class Operation : public Expression
 {
-protected:
-    Expression* _terme1;
-    Expression* _terme2;
+    private:
 
-public:
-    Operation(Expression* a, Expression* b);
+    protected:
+        Expression * _terme1;
+        Expression * _terme2;
+        string _symbol;
+
+    public:
+        //Operation(Expression* a, Expression* b);
+        std::string ToString();
 };
 
 #endif // OPERATION_H

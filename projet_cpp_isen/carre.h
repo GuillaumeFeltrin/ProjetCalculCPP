@@ -4,7 +4,6 @@
 
 class Carre : public OperationUnaire
 {
-//c carre
 public:
     Carre(Expression *_terme);
     float calcul();

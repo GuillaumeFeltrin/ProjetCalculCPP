@@ -12,6 +12,13 @@
 #include "IHM3D.h"
 #include "variable.h"
 #include "symboletable.h"
+#include "carre.h"
+#include "inverse.h"
+#include "logneperien.h"
+#include "puissance.h"
+#include "racinecarre.h"
+#include "valeurabsolue.h"
+#include "oppose.h"
 #include "iostream"
 #include "window.h"
 #include "mainwindowgen.h"
@@ -181,6 +188,109 @@ int main(int argc, char *argv[])
 
     // GROUPE 10
     IHM3D(argc,argv);
+
+    cout << "affichage classique inverse : ";
+    i.affichageClassique();
+    cout << endl;
+
+    cout <<"affichage polonaise inversee : ";
+    i.affichagePolonaiseInversee();
+    cout << endl;
+
+    cout << "affichage classique : ";
+    cout << i.calcul() << endl;
+    cout << endl;
+
+    // TEST LOGN
+    LogNeperien j(&b);
+
+    cout << "affichage classique logn() : ";
+    j.affichageClassique();
+    cout << endl;
+
+    cout << "affichage polonaise inversee : ";
+    j.affichagePolonaiseInversee();
+    cout << endl;
+
+    cout << "affichage classique : ";
+    cout << j.calcul() << endl;
+    cout << endl;
+
+    // TEST OPPOSE
+    Oppose k(&b);
+
+    cout << "affichage classique oppose : ";
+    k.affichageClassique();
+    cout << endl;
+
+    cout << "affichage polonaise inversee : ";
+    k.affichagePolonaiseInversee();
+    cout << endl;
+
+    cout << "affichage classique : ";
+    cout << k.calcul() << endl;
+    cout << endl;
+
+    // TEST RACINE
+    RacineCarre l(&b);
+
+    cout << "affichage classique racine : ";
+    l.affichageClassique();
+    cout << endl;
+
+    cout << "affichage polonaise inversee : ";
+    l.affichagePolonaiseInversee();
+    cout << endl;
+
+    cout << "affichage classique : ";
+    cout << l.calcul() << endl;
+    cout << endl;
+
+    // TEST ABSOLUE
+    ValeurAbsolue m(&b);
+
+    cout << "affichage classique val absolue : ";
+    m.affichageClassique();
+    cout << endl;
+
+    cout << "affichage polonaise inversee : ";
+    m.affichagePolonaiseInversee();
+    cout << endl;
+
+    cout << "affichage classique : ";
+    cout << m.calcul() << endl;
+    cout << endl;
+
+    // TEST PUISSANCE
+    Puissance n(&b, &c);
+
+    cout << "affichage classique puissance : ";
+    n.affichageClassique();
+    cout << endl;
+
+    cout << "affichage polonaise inversee : ";
+    n.affichagePolonaiseInversee();
+    cout << endl;
+
+    cout << "affichage classique : ";
+    cout << n.calcul() << endl;
+    cout << endl;
+
+    cout << "--------TEST INSERTION TABLE SYMBOLE--------" << endl;
+    Symboletable* table = new Symboletable();
+    Variable* var = new Variable('y',4);
+    table->insert(var->_csteV, var->_valeur);
+    cout << endl;
+
+    cout << "--------TEST INTERACTION UTILISATEUR--------" << endl;
+    InteractionUtilisateur* inter = new InteractionUtilisateur(table);
+    Expression* expression = inter->getExpression();
+    cout << "Affichage Polonaise Inversee :";
+    expression->affichagePolonaiseInversee();
+    cout << endl << "Affichage Classique :";
+    expression->affichageClassique();
+    cout << endl << "Resultat :" << expression->calcul() << endl;
+    cout << "---------FIN DU TEST-----------" << endl;
 
     // exécution application
     return app.exec();

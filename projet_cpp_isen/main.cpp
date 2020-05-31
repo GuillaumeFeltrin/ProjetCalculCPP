@@ -266,6 +266,9 @@ int main(int argc, char *argv[])
     cout << endl;
 
 
+    // TEST INVERSE
+    Inverse i(&b);
+
     cout << "affichage classique inverse : ";
     i.affichageClassique();
     cout << endl;

@@ -26,25 +26,41 @@ SOURCES += \
     mainwindow.cpp \
     multiplication.cpp \
     operation.cpp \
+    operationunaire.cpp \
     soustraction.cpp \
     symboletable.cpp \
     variable.cpp \
     window.cpp \
     IHM3D.cpp \
     surfacegraph.cpp \
+    carre.cpp \
+    inverse.cpp \
+    logneperien.cpp \
+    oppose.cpp \
+    puissance.cpp \
+    racinecarre.cpp \
+    valeurabsolue.cpp
 
 HEADERS += \
     SaveLoad.h \
     Expression.h \
     IHM3D.h \
     addition.h \
+    carre.h \
     constante.h \
     division.h \
+    inverse.h \
+    logneperien.h \
     interactionutilisateur.h \
     mainwindowgen.h \
     mainwindow.h \
     multiplication.h \
     operation.h \
+    operationunaire.h \
+    oppose.h \
+    puissance.h \
+    racinecarre.h \
+    valeurabsolue.h \
     soustraction.h \
     symboletable.h \
     variable.h \

@@ -22,6 +22,12 @@ class InteractionUtilisateur
     const string _sous = "-";
     const string _mult = "*";
     const string _div = "/";
+    const string _abs = "||";
+    const string _sqrt = "sqrt";
+    const string _log = "log";
+    const string _opp = "opp";
+    const string _inv = "inv";
+    const string _pow = "pow";
 
 public:
     InteractionUtilisateur(QList<QString> *listStr);
@@ -35,6 +41,12 @@ private:
     void gestionSoustraction();
     void gestionMultiplication();
     void gestionDivision();
+    void gestionPuissance();
+    void gestionRacine();
+    void gestionLog();
+    void gestionOppose();
+    void gestionAbsolue();
+    void gestionInverse();
     void gestionVariable(char str);
 
     stack<string> _pile;

@@ -175,10 +175,28 @@ void Window::suivante() {
 
         _resultat->setText(result);
     }
+    
+    QString strChamp = _champ->toPlainText();
+    if(_champ->toPlainText().toFloat() || _champ->toPlainText().compare("+") == 0
+            || _champ->toPlainText().compare("-") == 0 || _champ->toPlainText().compare("/") == 0
+            || _champ->toPlainText().compare("*") == 0) {
+        _elements.append(strChamp);
+    // On ajoute l'élément saisi par l'utilisateur dans la liste
+
+        //Affichage des saisies
+        _resultat->setVisible(true);
+        QString result;
+
+        for (int i=0; i<_elements.size(); i++) {
+            result = result + "  " + _elements[i];
+        }
+
+        _resultat->setText(result);
 
     // On efface le champ pour permetrte une nouvelle saisie
     _champ->clear();
 
+    }
 }
 
 void Window::ajouter() {
@@ -199,3 +217,5 @@ void Window::ajouter() {
     _variableNom->clear();
     _variableValeur->clear();
 }
+
+    

@@ -14,7 +14,7 @@
 #include "symboletable.h"
 #include "iostream"
 #include "window.h"
-#include "mainwindow.h"
+#include "mainwindowgen.h"
 #include "SaveLoad.h"
 
 using namespace std;
@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
  
     // GROUPE 5
-    MainWindow M;
+    MainWindowGen M;
 
     // GROUPE 2 & 1
     // Objet de la class Window qui hérite de QWidget

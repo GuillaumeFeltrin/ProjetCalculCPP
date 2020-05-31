@@ -1,7 +1,7 @@
-#include "mainwindow.h"
+#include "mainwindowgen.h"
 #include "window.h"
 
-MainWindow::MainWindow() : QWidget()  // spécification du constructeur
+MainWindowGen::MainWindowGen() : QWidget()  // spécification du constructeur
 {
     setFixedSize(300,400); // setFixedSize appartient à classe MaFenetre (héritage de QWidget
                            // Largeur / Hauteur
@@ -65,7 +65,7 @@ MainWindow::MainWindow() : QWidget()  // spécification du constructeur
     fenetre.show();
 }
 //==========================================================================================
-void MainWindow::Redirect()
+void MainWindowGen::Redirect()
 {
     QMessageBox::information(this, "Titre de la fenêtre", "Hello");
     // REM : information / warning / critical / question
@@ -74,56 +74,56 @@ void MainWindow::Redirect()
 
 }
 
-void MainWindow::ouvrirExpClassique()
+void MainWindowGen::ouvrirExpClassique()
 {
     QMessageBox::information(this, "Classique", "Classique");
 }
 
-void MainWindow::ouvrirExpPolo()
+void MainWindowGen::ouvrirExpPolo()
 {
     QMessageBox::information(this, "Polonaise inversée", "Polonaise inversée");
 }
 
-void MainWindow::ouvrirFonctionSaisie()
+void MainWindowGen::ouvrirFonctionSaisie()
 {
     QMessageBox::information(this, "Saisie", "Saisie");
 
 }
 
-void MainWindow::ouvrirFonctionShowExpress()
+void MainWindowGen::ouvrirFonctionShowExpress()
 {
     QMessageBox::information(this, "Expression Classique", "Expression Classique");
 
 
 }
 
-void MainWindow::ouvrirFonctionSimplify()
+void MainWindowGen::ouvrirFonctionSimplify()
 {
     QMessageBox::information(this, "Simplifier", "Simplifier");
 }
 
-void MainWindow::ouvrirFonctionShowVal()
+void MainWindowGen::ouvrirFonctionShowVal()
 {
     QMessageBox::information(this, "Valeur", "Valeur");
 }
 
-void MainWindow::ouvrirGraph2D()
+void MainWindowGen::ouvrirGraph2D()
 {
     QMessageBox::information(this, "2D", "2D");
 }
 
-void MainWindow::ouvrirGraph3D()
+void MainWindowGen::ouvrirGraph3D()
 {
     QMessageBox::information(this, "3D", "3D");
 }
 
 
-void MainWindow::ouvrirSauvegarde()
+void MainWindowGen::ouvrirSauvegarde()
 {
     QMessageBox::information(this, "Sauvegarde", "Sauvegarde");
 }
 
-void MainWindow::ouvrirEnregistrerSauvegarde()
+void MainWindowGen::ouvrirEnregistrerSauvegarde()
 {
     QMessageBox::information(this, "Sauvegarde", "Sauvegarde");
 }

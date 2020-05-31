@@ -1,5 +1,5 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#ifndef MAINWINDOWGEN_H
+#define MAINWINDOWGEN_H
 
 #include <QWidget>
 #include <QPushButton>
@@ -7,13 +7,13 @@
 #include <QtWidgets>
 
 
-class MainWindow : public QWidget // On hérite de QWidget (IMPORTANT)
+class MainWindowGen : public QWidget // On hérite de QWidget (IMPORTANT)
 {
     Q_OBJECT                    // Nécessaire pour créer un slot maison
     QWidget fenetre;
 
     public:
-    MainWindow();                // Constructeur (forcément pubic)
+    MainWindowGen();                // Constructeur (forcément pubic)
 
     public slots:               // Slots maison
     void Redirect();

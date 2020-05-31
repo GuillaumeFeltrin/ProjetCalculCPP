@@ -22,12 +22,12 @@ SOURCES += \
     division.cpp \
     interactionutilisateur.cpp \
     main.cpp \
+    mainwindowgen.cpp \
     multiplication.cpp \
     operation.cpp \
     soustraction.cpp \
     symboletable.cpp \
     variable.cpp \
-    mainwindow.cpp \
     window.cpp \
     IHM3D.cpp \
     surfacegraph.cpp
@@ -40,7 +40,7 @@ HEADERS += \
     constante.h \
     division.h \
     interactionutilisateur.h \
-    mainwindow.h \
+    mainwindowgen.h \
     multiplication.h \
     operation.h \
     soustraction.h \
@@ -50,6 +50,7 @@ HEADERS += \
     surfacegraph.h
 
 FORMS += \
+    mainwindowgen.ui \
     window.ui
     mainwindow.ui
 

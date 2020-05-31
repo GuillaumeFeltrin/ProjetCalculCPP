@@ -27,6 +27,7 @@
 
 using namespace std;
 
+//main2
 int main(int argc, char *argv[])
 {
     // creation application

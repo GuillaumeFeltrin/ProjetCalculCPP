@@ -1,0 +1,41 @@
+#include "Expression.h"
+#include "symbolestable.h"
+#include <iostream>
+
+
+int hashf(string id); // hash function
+bool insert(string id, float value);
+string find(string id);
+bool deleteRecord(string id);
+bool modify(string id, float value);
+
+using namespace std;
+
+// Create empty table
+Symboletable::Symboletable()
+{ for (int i = 0; i < MAX; i++){ list[i] = NULL;} }
+
+
+int Symboletable::
+{
+
+}
+
+Symboletable::
+{
+
+}
+
+Symboletable::
+{
+
+}
+
+Symboletable::
+{
+
+}
+Symboletable::
+{
+
+}

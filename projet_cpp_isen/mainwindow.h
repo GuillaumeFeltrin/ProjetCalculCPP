@@ -1,68 +1,38 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QWidget>
-#include <QPushButton>
-#include <QMessageBox>
-#include <QtWidgets>
+#include <QMainWindow>
+#include <QLineEdit>
+#include "constante.h"
+#include "window.h"
+QT_BEGIN_NAMESPACE
+namespace Ui { class MainWindow; }
+QT_END_NAMESPACE
 
-
-class MainWindow : public QWidget // On hérite de QWidget (IMPORTANT)
+class MainWindow : public QMainWindow
 {
-    Q_OBJECT                    // Nécessaire pour créer un slot maison
-    QWidget fenetre;
+    Q_OBJECT
 
-    public:
-    MainWindow();                // Constructeur (forcément pubic)
+public:
+    MainWindow(QWidget *parent = nullptr, float resultat = 0.0, Window * window = nullptr);
+    ~MainWindow();
 
-    public slots:               // Slots maison
-    void Redirect();
-    void ouvrirFonctionSaisie();
-    void ouvrirFonctionShowVal();
-    void ouvrirFonctionShowExpress();
-    void ouvrirFonctionSimplify();
-    void ouvrirExpClassique();
-    void ouvrirExpPolo();
-    // page 2
-    void ouvrirGraph2D();
-    void ouvrirGraph3D();
-    // page 2
-    void ouvrirSauvegarde();
-    void ouvrirEnregistrerSauvegarde();
+private slots:
 
-    private:
+    void on_sliderAbscisses_valueChanged(int value);
+    void on_pushButton_clicked();
 
-    QTabWidget *onglets = new QTabWidget(&fenetre);
+    void affichage_graphique();
 
-    QWidget *page1 = new QWidget;
-    QWidget *page2 = new QWidget;
-    QWidget *page3 = new QWidget;
+    void affichage_graphique(Expression *exp);
 
-    // page 1
-    QLineEdit *saisie = new QLineEdit("Entrez votre expression");
-    QPushButton *showExpress = new QPushButton("Afficher l'expression");
-    QPushButton *showVal = new QPushButton("Afficher la valeur");
-    QPushButton *simplify = new QPushButton("Simplifier l'expression");
-    QPushButton *classique = new QPushButton("Afficher l'expression classique");
-    QPushButton *polo = new QPushButton("Afficher l'expression polonaise inversée");
-
-
-    // page 2
-
-    QPushButton *deud = new QPushButton("Graphique 2D");
-    QPushButton *troid = new QPushButton("Graphique 3D");
-
-    // page 3
-
-    QPushButton *acces = new QPushButton("Ouvrir une sauvegarde");
-    QPushButton *sauv = new QPushButton("Sauvegarder");
-
-    QVBoxLayout *vbox1 = new QVBoxLayout;
-    QVBoxLayout *vbox2 = new QVBoxLayout;
-    QVBoxLayout *vbox3 = new QVBoxLayout;
-    QPushButton *m_bouton;      // Attribut (forcément privé)
-                                // pointeur --> il faudra le construire dynamiquement (new)
-
+private:
+    Ui::MainWindow *ui;
+    QLineEdit *abscisseValue;
+    Expression *_exp;
+    InteractionUtilisateur *_inter;
+    Window * _window;
+    int abscisse;
+    float resultat_calcul;
 };
-
-#endif
+#endif // MAINWINDOW_H

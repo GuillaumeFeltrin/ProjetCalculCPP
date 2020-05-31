@@ -27,7 +27,7 @@ public:
     InteractionUtilisateur(QList<QString> *listStr);
     InteractionUtilisateur(QList<QString> *listStr, Symboletable *table);
     Expression* getExpression(){return _pileExpression.top();}
-
+    Symboletable* getSymboleTable(){return _table;}
 private:
     void initialiseInteraction(QList<QString> *listStr);
     void analyseElement(string str);

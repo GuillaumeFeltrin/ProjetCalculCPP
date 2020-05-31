@@ -2,6 +2,10 @@
 #define EXPRESSION_H
 
 #include <iostream>
+#include <string>
+
+using namespace std;
+
 
 class Expression
 {
@@ -16,6 +20,9 @@ class Expression
         virtual void affichagePolonaiseInversee() {}
         virtual std::string affichageClassiqueStr() { return ""; }
         virtual std::string affichagePolonaiseInverseeStr() { return ""; }
+        virtual Expression* simplifier() = 0;
+        virtual bool isConstante() = 0;
+        virtual std::string ToString() =0;
 };
 
-#endif // EXPRESSION_H
+#endif

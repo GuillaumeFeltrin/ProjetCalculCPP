@@ -10,8 +10,6 @@ public:
     float calcul();
     void affichageClassique();
     void affichagePolonaiseInversee();
-    bool isConstante();
-    Expression* simplifier();
 };
 
 #endif // INVERSE_H

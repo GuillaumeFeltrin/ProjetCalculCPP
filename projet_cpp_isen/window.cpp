@@ -184,18 +184,19 @@ void Window::suivante() {
     // On ajoute l'élément saisi par l'utilisateur dans la liste
 
         //Affichage des saisies
-        resultat->setVisible(true);
+        _resultat->setVisible(true);
         QString result;
 
         for (int i=0; i<_elements.size(); i++) {
             result = result + "  " + _elements[i];
         }
 
-        resultat->setText(result);
+        _resultat->setText(result);
 
     // On efface le champ pour permetrte une nouvelle saisie
     _champ->clear();
 
+    }
 }
 
 void Window::ajouter() {

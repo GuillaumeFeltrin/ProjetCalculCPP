@@ -189,7 +189,7 @@ int main(int argc, char *argv[])
     // GROUPE 10
     IHM3D(argc,argv);
 
-    // GROUPE 9
+    // GROUPE 9 (GROUPE 7 : certains éléments ne fonctionnent pas à première vue)
     // test affichage CONSTANTE
     cout << "creation premiere constante: ";
     Constante b(10);

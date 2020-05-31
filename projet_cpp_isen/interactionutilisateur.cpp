@@ -130,6 +130,7 @@ void InteractionUtilisateur::gestionPuissance(){
 
     //creation Operation
     Puissance* p = new Puissance(expression1,expression2);
+    _pile.push(to_string(p->calcul()));
     _pileExpression.push(p);
 }
 

@@ -16,7 +16,7 @@ class Operation : public Expression
         string _symbol;
 
     public:
-
+        //Operation(Expression* a, Expression* b);
         std::string ToString();
 };
 

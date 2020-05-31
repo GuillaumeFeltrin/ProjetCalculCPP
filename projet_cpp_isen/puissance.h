@@ -2,9 +2,10 @@
 #define PUISSANCE_H
 
 #include "operation.h"
+#include "Expression.h"
 #include <cmath>
 
-class Puissance : Operation
+class Puissance : public Operation
 {
 public:
     Puissance(Expression *_terme1, Expression *_terme2);

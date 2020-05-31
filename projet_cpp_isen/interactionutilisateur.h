@@ -22,7 +22,7 @@ class InteractionUtilisateur
     const string _sous = "-";
     const string _mult = "*";
     const string _div = "/";
-    const srting _abs = "||";
+    const string _abs = "||";
     const string _sqrt = "sqrt";
     const string _log = "log";
     const string _opp = "opp";

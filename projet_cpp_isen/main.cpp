@@ -189,6 +189,84 @@ int main(int argc, char *argv[])
     // GROUPE 10
     IHM3D(argc,argv);
 
+    // GROUPE 9
+    // test affichage CONSTANTE
+    cout << "creation premiere constante: ";
+    Constante b(10);
+    b.affichageClassique();
+    cout << endl;
+    cout << "creation deuxieme constante: ";
+    Constante c(20);
+    c.affichageClassique();
+    cout << endl << endl;
+
+
+    // TEST ADDITION
+    Addition d(&b, &c);
+
+    cout << "affichage classique addition : ";
+    d.affichageClassique();
+    cout << endl;
+
+    cout <<"affichage polonaise inversee : ";
+    d.affichagePolonaiseInversee();
+    cout << endl;
+
+    cout << "affichage classique : ";
+    cout << d.calcul() << endl;
+    cout << endl;
+
+
+    // TEST SOUSTRACTION
+    Soustraction e(&b, &c);
+
+    cout << "affichage classique soustraction : ";
+    e.affichageClassique();
+    cout << endl;
+
+    cout <<"affichage polonaise inversee : ";
+    e.affichagePolonaiseInversee();
+    cout << endl;
+
+    cout << "affichage classique : ";
+    cout << e.calcul() << endl;
+    cout << endl;
+
+
+    // TEST MULTIPLICATION
+    Multiplication f(&b, &c);
+
+    cout << "affichage classique multiplication : ";
+    f.affichageClassique();
+    cout << endl;
+
+    cout <<"affichage polonaise inversee : ";
+    f.affichagePolonaiseInversee();
+    cout << endl;
+
+    cout << "affichage classique : ";
+    cout << f.calcul() << endl;
+    cout << endl;
+
+
+    // TEST CARRE
+    Carre h(&b);
+
+    cout << "affichage classique carre : ";
+    h.affichageClassique();
+    cout << endl;
+
+    cout <<"affichage polonaise inversee : ";
+    h.affichagePolonaiseInversee();
+    cout << endl;
+
+    cout << "affichage classique : ";
+    cout << h.calcul() << endl;
+    cout << endl;
+
+    // TEST INVERSE
+    Inverse i(&b);
+
     cout << "affichage classique inverse : ";
     i.affichageClassique();
     cout << endl;
@@ -291,7 +369,6 @@ int main(int argc, char *argv[])
     expression->affichageClassique();
     cout << endl << "Resultat :" << expression->calcul() << endl;
     cout << "---------FIN DU TEST-----------" << endl;
-
     // exécution application
     return app.exec();
 }

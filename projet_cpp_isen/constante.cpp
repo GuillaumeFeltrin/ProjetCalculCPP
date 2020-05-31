@@ -11,11 +11,11 @@ Constante::Constante(float val)
 }
 
 void Constante::affichageClassique(){
-    cout << _valeur;
+    std::cout << _valeur;
 }
 
 void Constante::affichagePolonaiseInversee(){
-    cout << _valeur;
+    std::cout << _valeur;
 }
 
 float Constante :: calcul() {

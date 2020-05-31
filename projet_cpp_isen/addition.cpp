@@ -51,11 +51,12 @@ void Addition::affichageClassique() {
     std::cout << " ) ";;
 }
 
-void Addition :: affichagePolonaiseInversee(){
+void Addition::affichagePolonaiseInversee() {
     _terme1->affichagePolonaiseInversee();
-    cout << " ";
+    std::cout << " ";
     _terme2->affichagePolonaiseInversee();
-    cout<<" + ";}
+    std::cout << " + ";
+}
 
 std::string Addition::affichageClassiqueStr() {
     return " ( " + _terme1->affichageClassiqueStr()

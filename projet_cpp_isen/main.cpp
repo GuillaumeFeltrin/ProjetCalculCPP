@@ -16,6 +16,7 @@
 #include "window.h"
 #include "mainwindowgen.h"
 #include "SaveLoad.h"
+#include "mainwindow.h"
 
 using namespace std;
 

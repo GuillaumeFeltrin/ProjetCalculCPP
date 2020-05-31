@@ -27,11 +27,7 @@
 
 using namespace std;
 
-<<<<<<< HEAD
 //main
-=======
-//main2
->>>>>>> test
 int main(int argc, char *argv[])
 {
     // creation application

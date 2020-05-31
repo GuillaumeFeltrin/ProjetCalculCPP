@@ -5,7 +5,6 @@
 
 class ValeurAbsolue : public OperationUnaire
 {
-    //c abs
 public:
     ValeurAbsolue(Expression *_terme);
     float calcul();

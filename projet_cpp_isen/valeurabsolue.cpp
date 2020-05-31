@@ -1,6 +1,5 @@
 #include "valeurabsolue.h"
 
-//m
 ValeurAbsolue::ValeurAbsolue(Expression *_terme) : OperationUnaire(_terme) {}
 
 float ValeurAbsolue ::calcul()

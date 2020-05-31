@@ -1,6 +1,5 @@
 #include "logneperien.h"
 
-//l
 LogNeperien::LogNeperien(Expression *_terme) :
     OperationUnaire(_terme)  {}
 

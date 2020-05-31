@@ -1,6 +1,5 @@
 #include "oppose.h"
 
-//d
 Oppose::Oppose(Expression *_terme) :
     OperationUnaire(_terme)  {}
 

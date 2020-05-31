@@ -1,6 +1,5 @@
 #include "racinecarre.h"
 
-//d
 RacineCarre::RacineCarre(Expression *_terme) :
     OperationUnaire(_terme)  {}
 

@@ -5,7 +5,6 @@
 
 class LogNeperien : public OperationUnaire
 {
-    //c log
 public:
     LogNeperien(Expression *_terme);
     float calcul();

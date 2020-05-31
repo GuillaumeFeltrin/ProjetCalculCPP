@@ -1,5 +1,5 @@
 #include "carre.h"
-//t
+
 Carre::Carre(Expression *_terme) :
     OperationUnaire(_terme)  {}
 

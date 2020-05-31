@@ -29,7 +29,9 @@ int main(int argc, char *argv[])
     MainWindowGen M;
 
     // Groupe 4
-    MainWindow M4;
+    //MainWindow M4;
+    Window window4;
+    window4.show();
 
     // GROUPE 2 & 1
     // Objet de la class Window qui hérite de QWidget

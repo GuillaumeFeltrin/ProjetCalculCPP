@@ -5,6 +5,7 @@
 
 class Inverse : public OperationUnaire
 {
+//c inverse
 public:
     Inverse(Expression *_terme);
     float calcul();

@@ -5,6 +5,7 @@
 
 class RacineCarre : public OperationUnaire
 {
+    //c carre
 public:
     RacineCarre(Expression *_terme);
     float calcul();

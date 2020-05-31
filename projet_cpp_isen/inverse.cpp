@@ -1,5 +1,6 @@
 #include "inverse.h"
 
+//t
 Inverse::Inverse(Expression *_terme) :
     OperationUnaire(_terme)  {}
 

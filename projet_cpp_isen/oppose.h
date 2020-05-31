@@ -5,6 +5,7 @@
 
 class Oppose : public OperationUnaire
 {
+    //c oppose
 public:
     Oppose(Expression *_terme);
     float calcul();
